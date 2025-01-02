@@ -4,45 +4,44 @@
 <%
     List<Client> clients = (List<Client>) request.getAttribute("clients");
 %>
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste des clients</title>
-</head>
-<body>
-<h1>Liste des clients</h1>
-<a href="/client/form">Ajouter un nouveau client</a>
-<table border="1">
-    <thead>
-    <tr>
-        <th>Id</th>
-        <th>Nom</th>
-        <th>Date de naissance</th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <%
-        for (Client client : clients) {
-    %>
-    <tr>
-        <td><%= client.getId() %></td>
-        <td><%= client.getNom() %></td>
-        <td><%= client.getDaty() %></td>
-        <td>
-            <a href="/client/formUpdate?id=<%= client.getId() %>">Modifier</a>
-            <form action="/client/delete" method="post" style="display: inline;">
-                <input type="hidden" name="id" value="<%= client.getId() %>">
-                <button type="submit">Supprimer</button>
-            </form>
-        </td>
-    </tr>
-    <%
-        }
-    %>
-    </tbody>
-</table>
-</body>
-</html>
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5>Liste des clients</h5>
+        <a href="/client/form"><button type="submit" class="btn btn-dark float-end">Ajouter un nouveau client</button></a>
+    </div>
+
+
+    <div class="table-responsive text-nowrap">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Date de naissance</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+            <%
+                for (Client client : clients) {
+            %>
+
+            <tr>
+                <td><%= client.getId() %></td>
+                <td><%= client.getNom() %></td>
+                <td><%= client.getDaty() %></td>
+                <td>
+                    <a href="/client/formUpdate?id=<%= client.getId() %>">Modifier</a>
+                    <form action="/client/delete" method="post" style="display: inline;">
+                        <input type="hidden" name="id" value="<%= client.getId() %>">
+                        <button type="submit">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+            <%
+                }
+            %>
+            </tbody>
+        </table>
+    </div>
+</div>
