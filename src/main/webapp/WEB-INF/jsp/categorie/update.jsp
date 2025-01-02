@@ -5,21 +5,27 @@
 %>
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modifier une catégorie</title>
-</head>
-<body>
-<h1>Modifier une catégorie</h1>
-<form action="/categorie/update" method="post">
-    <input type="hidden" name="id" value="<%= categorie.getId() %>">
 
-    <label for="nom">Nom :</label>
-    <input type="text" id="nom" name="nom" value="<%= categorie.getNom() %>" required><br><br>
+<div class="card mb-6">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Modifier une catégorie</h5>
+        <small class="text-body float-end">Modification catégorie</small>
+    </div>
+    <div class="card-body">
+        <form action="/categorie/update" method="post">
+            <input type="hidden" name="id" value="<%= categorie.getId() %>">
 
-    <button type="submit">Mettre à jour</button>
-</form>
-<a href="/categorie/list">Retour à la liste des catégories</a>
-</body>
+            <div class="mb-6">
+                <label class="form-label" for="basic-default-name">Nom :</label>
+                <input type="text" class="form-control" id="basic-default-name" 
+                       name="nom" value="<%= categorie.getNom() %>" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Mettre à jour</button>
+        </form>
+
+        <a href="/categorie/list"><button type="button" class="btn btn-dark">Retour à la liste des catégories</button></a>
+    </div>
+</div>
+
 </html>

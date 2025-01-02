@@ -1,18 +1,24 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter une catégorie</title>
-</head>
-<body>
-<h1>Ajouter une catégorie</h1>
-<form action="/categorie/save" method="post">
-    <label for="nom">Nom :</label>
-    <input type="text" id="nom" name="nom" required><br><br>
-    <button type="submit">Enregistrer</button>
-</form>
-<a href="/categorie/list">Retour à la liste des catégories</a>
-</body>
+
+<div class="card mb-6">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Ajouter une catégorie</h5>
+        <small class="text-body float-end">Nouvelle catégorie</small>
+    </div>
+    <div class="card-body">
+        <form action="/categorie/save" method="post">
+            <div class="mb-6">
+                <label class="form-label" for="basic-default-name">Nom :</label>
+                <input type="text" class="form-control" id="basic-default-name" name="nom" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+        </form>
+
+        <a href="/categorie/list"><button type="button" class="btn btn-dark">Retour à la liste des catégories</button></a>
+    </div>
+</div>
+
 </html>

@@ -23,10 +23,10 @@ public class ProduitController {
 
     @GetMapping("/form")
     public ModelAndView form() {
-        ModelAndView mav = new ModelAndView("produit/form");
-        mav.addObject("models", modelService.getAll());
-        mav.addObject("categories", categorieproduitService.getAll());
-        return mav;
+        return new ModelAndView("template")
+            .addObject("content", "produit/form.jsp")
+            .addObject("models", modelService.getAll())
+            .addObject("categories", categorieproduitService.getAll());
     }
 
     @PostMapping("/save")
@@ -37,18 +37,19 @@ public class ProduitController {
 
     @GetMapping("/list")
     public ModelAndView list() {
-        ModelAndView mav = new ModelAndView("produit/list");
+        ModelAndView mav = new ModelAndView("template");
         mav.addObject("produits", produitService.getAll());
+        mav.addObject("content", "produit/list.jsp");
         return mav;
     }
 
     @GetMapping("/formUpdate")
     public ModelAndView formUpdate(@RequestParam("id") Integer id) {
-        ModelAndView mav = new ModelAndView("produit/update");
-        mav.addObject("produit", produitService.getById(id));
-        mav.addObject("models", modelService.getAll());
-        mav.addObject("categories", categorieproduitService.getAll());
-        return mav;
+        return new ModelAndView("template")
+            .addObject("content", "produit/update.jsp")
+            .addObject("produit", produitService.getById(id))
+            .addObject("models", modelService.getAll())
+            .addObject("categories", categorieproduitService.getAll());
     }
 
     @PostMapping("/update")

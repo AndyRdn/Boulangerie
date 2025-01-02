@@ -15,7 +15,8 @@ public class TypemodelController {
 
     @GetMapping("/form")
     public ModelAndView form() {
-        return new ModelAndView("typemodel/form");
+        return new ModelAndView("template")
+            .addObject("content", "typemodel/form.jsp");
     }
 
     @PostMapping("/save")
@@ -28,16 +29,17 @@ public class TypemodelController {
 
     @GetMapping("/list")
     public ModelAndView list() {
-        ModelAndView mav = new ModelAndView("typemodel/list");
+        ModelAndView mav = new ModelAndView("template");
         mav.addObject("typemodels", typemodelService.getAll());
+        mav.addObject("content", "typemodel/list.jsp");
         return mav;
     }
 
     @GetMapping("/formUpdate")
     public ModelAndView formUpdate(@RequestParam("id") Integer id) {
-        ModelAndView mav = new ModelAndView("typemodel/update");
-        mav.addObject("typemodel", typemodelService.getById(id));
-        return mav;
+        return new ModelAndView("template")
+            .addObject("content", "typemodel/update.jsp")
+            .addObject("typemodel", typemodelService.getById(id));
     }
 
     @PostMapping("/update")
