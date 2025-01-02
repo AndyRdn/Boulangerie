@@ -5,21 +5,25 @@
 %>
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modifier un fournisseur</title>
-</head>
-<body>
-<h1>Modifier un fournisseur</h1>
-<form action="/fournisseur/update" method="post">
-    <input type="hidden" name="id" value="<%= fournisseur.getId() %>">
 
-    <label for="nom">Nom :</label>
-    <input type="text" id="nom" name="nom" value="<%= fournisseur.getNom() %>" required><br><br>
+<div class="card mb-6">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Modifier un fournisseur</h5> <small class="text-body float-end">Mise à jour des informations</small>
+    </div>
+    <div class="card-body">
+        <form action="/fournisseur/update" method="post">
+            <input type="hidden" name="id" value="<%= fournisseur.getId() %>">
 
-    <button type="submit">Mettre à jour</button>
-</form>
-<a href="/fournisseur/list">Retour à la liste des fournisseurs</a>
-</body>
+            <div class="mb-6">
+                <label class="form-label" for="basic-default-name">Nom :</label>
+                <input type="text" class="form-control" id="basic-default-name" name="nom" value="<%= fournisseur.getNom() %>" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Mettre à jour</button>
+        </form>
+
+        <a href="/fournisseur/list"><button type="button" class="btn btn-dark mt-3">Retour à la liste des fournisseurs</button></a>
+    </div>
+</div>
+
 </html>

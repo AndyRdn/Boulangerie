@@ -36,11 +36,12 @@ public class ClientController {
     }
 
     @GetMapping("/formUpdate")
-    public ModelAndView formUpdate(@RequestParam("id") Integer id) {
-        ModelAndView mav = new ModelAndView("client/update");
-        mav.addObject("client", clientService.getById(id));
-        return mav;
-    }
+public ModelAndView formUpdate(@RequestParam("id") Integer id) {
+    return new ModelAndView("template")
+        .addObject("content", "client/update.jsp")
+        .addObject("client", clientService.getById(id));
+}
+
 
     @PostMapping("/update")
     public String update(@RequestParam("id") Integer id, @ModelAttribute ClientForm form) {

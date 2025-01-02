@@ -6,30 +6,36 @@
 %>
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter un modèle</title>
-</head>
-<body>
-<h1>Ajouter un modèle</h1>
-<form action="/model/save" method="post">
-    <label for="nom">Nom :</label>
-    <input type="text" id="nom" name="nom" required><br><br>
 
-    <label for="idtypeproduit">Type de produit :</label>
-    <select id="idtypeproduit" name="idtypeproduit" required>
-        <%
-            for (Typemodel typemodel : typemodels) {
-        %>
-        <option value="<%= typemodel.getId() %>"><%= typemodel.getNom() %></option>
-        <%
-            }
-        %>
-    </select><br><br>
+<div class="card mb-6">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Ajouter un modèle</h5> <small class="text-body float-end">Nouveau modèle</small>
+    </div>
+    <div class="card-body">
+        <form action="/model/save" method="post">
+            <div class="mb-6">
+                <label class="form-label" for="basic-default-name">Nom :</label>
+                <input type="text" class="form-control" id="basic-default-name" name="nom" required>
+            </div>
 
-    <button type="submit">Enregistrer</button>
-</form>
-<a href="/model/list">Retour à la liste des modèles</a>
-</body>
+            <div class="mb-6">
+                <label class="form-label" for="idtypeproduit">Type de produit :</label>
+                <select id="idtypeproduit" name="idtypeproduit" class="form-control" required>
+                    <%
+                        for (Typemodel typemodel : typemodels) {
+                    %>
+                    <option value="<%= typemodel.getId() %>"><%= typemodel.getNom() %></option>
+                    <%
+                        }
+                    %>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+        </form>
+
+        <a href="/model/list"><button type="button" class="btn btn-dark mt-3">Retour à la liste des modèles</button></a>
+    </div>
+</div>
+
 </html>
