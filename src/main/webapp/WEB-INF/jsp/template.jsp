@@ -142,6 +142,7 @@
                 <!-- Dashboards -->
                 <!-- Front Pages -->
                 <%
+
                     String[] modules = {"categorie", "client", "employe", "fournisseur", "model", "produit", "typemodel"};
                     String selectedModule = request.getParameter("module");
                     if (selectedModule == null || selectedModule.isEmpty()) {
@@ -177,6 +178,8 @@
                         </li>
                     </ul>
                 </li>
+=======
+  
 
 
                 <!-- Apps & Pages -->
