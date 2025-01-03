@@ -21,8 +21,12 @@ public class ModelController {
 
     @GetMapping("/form")
     public ModelAndView form() {
-        return new ModelAndView("template").addObject("content", "model/form.jsp");
+
+        return new ModelAndView("template")
+                .addObject("content", "model/form.jsp")
+                .addObject("typemodels", typemodelService.getAll());
     }
+
 
     @PostMapping("/save")
     public String save(@ModelAttribute ModelForm form) {

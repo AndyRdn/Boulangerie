@@ -142,42 +142,44 @@
                 <!-- Dashboards -->
                 <!-- Front Pages -->
                 <%
-    String[] modules = {"categorie", "client", "employe", "fournisseur", "model", "produit", "typemodel"};
-    String selectedModule = request.getParameter("module");
-    if (selectedModule == null || selectedModule.isEmpty()) {
-        selectedModule = "client";
-    }
-%>
 
-<li class="menu-item open" style="">
-    <a href="javascript:void(0);" class="menu-link menu-toggle">
-        <i class="menu-icon tf-icons bx bx-store"></i>
-        <div class="text-truncate">
-            <form method="get" action="">
-                <select name="module" onchange="this.form.submit()">
-                    <% for (String module : modules) { %>
-                        <option value="<%= module %>" <%= module.equals(selectedModule) ? "selected" : "" %>>
-                            <%= module %>
-                        </option>
-                    <% } %>
-                </select>
-            </form>
-        </div>
-    </a>
-    <ul class="menu-sub">
-        <li class="menu-item">
-            <a href="<%= request.getContextPath() %>/<%= selectedModule %>/list" class="menu-link">
-                <div class="text-truncate" data-i18n="List">List</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="<%= request.getContextPath() %>/<%= selectedModule %>/form" class="menu-link">
-                <div class="text-truncate" data-i18n="Insertion">Insertion</div>
-            </a>
-        </li>
-    </ul>
-</li>
+                    String[] modules = {"categorie", "client", "employe", "fournisseur", "model", "produit", "typemodel"};
+                    String selectedModule = request.getParameter("module");
+                    if (selectedModule == null || selectedModule.isEmpty()) {
+                        selectedModule = "client";
+                    }
+                %>
 
+                <li class="menu-item open" style="">
+                    <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons bx bx-store"></i>
+                        <div class="text-truncate">
+                            <form method="get" action="">
+                                <select name="module" onchange="this.form.submit()">
+                                    <% for (String module : modules) { %>
+                                    <option value="<%= module %>" <%= module.equals(selectedModule) ? "selected" : "" %>>
+                                        <%= module %>
+                                    </option>
+                                    <% } %>
+                                </select>
+                            </form>
+                        </div>
+                    </a>
+                    <ul class="menu-sub">
+                        <li class="menu-item">
+                            <a href="<%= request.getContextPath() %>/<%= selectedModule %>/list" class="menu-link">
+                                <div class="text-truncate" data-i18n="List">List</div>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="<%= request.getContextPath() %>/<%= selectedModule %>/form" class="menu-link">
+                                <div class="text-truncate" data-i18n="Insertion">Insertion</div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+=======
+  
 
 
                 <!-- Apps & Pages -->
