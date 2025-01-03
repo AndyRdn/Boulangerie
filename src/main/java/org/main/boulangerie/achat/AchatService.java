@@ -38,12 +38,11 @@ public class AchatService {
             detail.setIdachat(achat);
             achatdetailRepository.save(detail);
 
-            // Ajouter dans Mvtstockdetail
             Mvtstockdetail mvtStockDetail = new Mvtstockdetail();
             mvtStockDetail.setIdmvtstock(mvtStock);
             mvtStockDetail.setIdmodel(detail.getIdingredient().getIdmodel());
             mvtStockDetail.setEntree(detail.getQuantite());
-            mvtStockDetail.setSortie(0); // Pas de sortie pour un achat
+            mvtStockDetail.setSortie(0);
             mvtStockDetail.setPrixunitaire(detail.getPrixunitaire().longValue());
             mvtStockDetailsRepository.save(mvtStockDetail);
         }
