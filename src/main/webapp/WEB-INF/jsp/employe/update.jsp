@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: DCI
-  Date: 23/12/2024
-  Time: 20:54
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="org.main.boulangerie.employe.Employer" %>
 <%
@@ -12,26 +5,33 @@
 %>
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modifier un employé</title>
-</head>
-<body>
-<h1>Modifier un employé</h1>
-<form action="/employe/update" method="post">
-    <input type="hidden" name="id" value="<%= employe.getId() %>">
 
-    <label for="nom">Nom :</label>
-    <input type="text" id="nom" name="nom" value="<%= employe.getNom() %>" required><br>
+<div class="card mb-6">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Modifier un employé</h5> <small class="text-body float-end">Modification des informations</small>
+    </div>
+    <div class="card-body">
+        <form action="/employe/update" method="post">
+            <input type="hidden" name="id" value="<%= employe.getId() %>">
 
-    <label for="salaire">Salaire :</label>
-    <input type="number" id="salaire" name="salaire" value="<%= employe.getSalaire() %>" step="0.01" required><br>
+            <div class="mb-6">
+                <label class="form-label" for="basic-default-name">Nom :</label>
+                <input type="text" class="form-control" id="basic-default-name" name="nom" value="<%= employe.getNom() %>" required>
+            </div>
 
-    <label for="dateembauche">Date d'embauche :</label>
-    <input type="date" id="dateembauche" name="dateembauche" value="<%= employe.getDateembauche() %>" required><br>
+            <div class="mb-6">
+                <label class="form-label" for="basic-default-salaire">Salaire :</label>
+                <input type="number" class="form-control" id="basic-default-salaire" name="salaire" value="<%= employe.getSalaire() %>" step="0.01" required>
+            </div>
 
-    <button type="submit">Mettre à jour</button>
-</form>
-</body>
+            <div class="mb-6">
+                <label class="form-label" for="basic-default-dateembauche">Date d'embauche :</label>
+                <input type="date" class="form-control" id="basic-default-dateembauche" name="dateembauche" value="<%= employe.getDateembauche() %>" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Mettre à jour</button>
+        </form>
+    </div>
+</div>
+
 </html>

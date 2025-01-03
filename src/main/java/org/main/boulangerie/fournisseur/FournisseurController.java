@@ -15,7 +15,7 @@ public class FournisseurController {
 
     @GetMapping("/form")
     public ModelAndView form() {
-        return new ModelAndView("fournisseur/form");
+        return new ModelAndView("template").addObject("content", "fournisseur/form.jsp");
     }
 
     @PostMapping("/save")
@@ -28,16 +28,17 @@ public class FournisseurController {
 
     @GetMapping("/list")
     public ModelAndView list() {
-        ModelAndView mav = new ModelAndView("fournisseur/list");
+        ModelAndView mav = new ModelAndView("template");
         mav.addObject("fournisseurs", fournisseurService.getAll());
+        mav.addObject("content", "fournisseur/list.jsp");
         return mav;
     }
 
     @GetMapping("/formUpdate")
     public ModelAndView formUpdate(@RequestParam("id") Integer id) {
-        ModelAndView mav = new ModelAndView("fournisseur/update");
-        mav.addObject("fournisseur", fournisseurService.getById(id));
-        return mav;
+        return new ModelAndView("template")
+            .addObject("content", "fournisseur/update.jsp")
+            .addObject("fournisseur", fournisseurService.getById(id));
     }
 
     @PostMapping("/update")

@@ -15,7 +15,7 @@ public class CategorieproduitController {
 
     @GetMapping("/form")
     public ModelAndView form() {
-        return new ModelAndView("categorie/form");
+        return new ModelAndView("template").addObject("content", "categorie/form.jsp");
     }
 
     @PostMapping("/save")
@@ -28,16 +28,17 @@ public class CategorieproduitController {
 
     @GetMapping("/list")
     public ModelAndView list() {
-        ModelAndView mav = new ModelAndView("categorie/list");
+        ModelAndView mav = new ModelAndView("template");
         mav.addObject("categories", categorieproduitService.getAll());
+        mav.addObject("content", "categorie/list.jsp");
         return mav;
     }
 
     @GetMapping("/formUpdate")
     public ModelAndView formUpdate(@RequestParam("id") Integer id) {
-        ModelAndView mav = new ModelAndView("categorie/update");
-        mav.addObject("categorie", categorieproduitService.getById(id));
-        return mav;
+        return new ModelAndView("template")
+            .addObject("content", "categorie/update.jsp")
+            .addObject("categorie", categorieproduitService.getById(id));
     }
 
     @PostMapping("/update")

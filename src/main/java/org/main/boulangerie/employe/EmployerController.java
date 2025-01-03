@@ -15,7 +15,7 @@ public class EmployerController {
 
     @GetMapping("/form")
     public ModelAndView form() {
-        return new ModelAndView("employe/form");
+        return new ModelAndView("template").addObject("content", "employe/form.jsp");
     }
 
     @PostMapping("/save")
@@ -30,16 +30,17 @@ public class EmployerController {
 
     @GetMapping("/list")
     public ModelAndView list() {
-        ModelAndView mav = new ModelAndView("employe/list");
+        ModelAndView mav = new ModelAndView("template");
         mav.addObject("employes", employerService.getAll());
+        mav.addObject("content", "employe/list.jsp");
         return mav;
     }
 
     @GetMapping("/formUpdate")
     public ModelAndView formUpdate(@RequestParam("id") Integer id) {
-        ModelAndView mav = new ModelAndView("employe/update");
-        mav.addObject("employe", employerService.getById(id));
-        return mav;
+        return new ModelAndView("template")
+            .addObject("content", "employe/update.jsp")
+            .addObject("employe", employerService.getById(id));
     }
 
     @PostMapping("/update")
