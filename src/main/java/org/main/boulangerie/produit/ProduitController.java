@@ -28,6 +28,13 @@ public class ProduitController {
             .addObject("ingredients", ingredientRepository.findAll());
 
     }
+    @GetMapping("/search")
+    public ModelAndView recherche() {
+        ModelAndView mav = new ModelAndView("template");
+//        mav.addObject("produits", produitService.checkProduit(I));
+        mav.addObject("content", "produit/list.jsp");
+        return mav;
+    }
 
     @PostMapping("/save")
     public String save(@ModelAttribute ProduitForm form) {
