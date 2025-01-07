@@ -18,22 +18,18 @@ import java.util.List;
 @Service
 public class ProduitService {
     private final ProduitRepository produitRepository;
-    private final IngredientRepository ingredientRepository;
 
     private final ModelService modelService;
     private final TypemodelRepository typemodelRepository;
-    private final CategorieproduitService categorieproduitService;
     private final ModelRepository modelRepository;
     private final ProduitDetailRepository produitDetailRepository;
 
-    public ProduitService(ProduitRepository produitRepository, IngredientRepository ingredientRepository, ModelService modelService, TypemodelRepository typemodelRepository, CategorieproduitService categorieproduitService,
+    public ProduitService(ProduitRepository produitRepository, ModelService modelService, TypemodelRepository typemodelRepository,
                           ModelRepository modelRepository,
                           ProduitDetailRepository produitDetailRepository) {
         this.produitRepository = produitRepository;
-        this.ingredientRepository = ingredientRepository;
         this.modelService = modelService;
         this.typemodelRepository = typemodelRepository;
-        this.categorieproduitService = categorieproduitService;
         this.modelRepository = modelRepository;
         this.produitDetailRepository = produitDetailRepository;
     }
