@@ -1,6 +1,9 @@
 package org.main.boulangerie.produit;
 
+import org.main.boulangerie.categorie.Categorieproduit;
+import org.main.boulangerie.categorie.CategorieproduitRepository;
 import org.main.boulangerie.categorie.CategorieproduitService;
+import org.main.boulangerie.ingredient.Ingredient;
 import org.main.boulangerie.ingredient.IngredientRepository;
 import org.main.boulangerie.ingredient.IngredientService;
 import org.main.boulangerie.model.ModelService;
@@ -15,10 +18,12 @@ import java.util.List;
 public class ProduitController {
     private final ProduitService produitService;
     private final IngredientRepository ingredientRepository;
+    private final CategorieproduitRepository categorieproduitRepository;
 
-    public ProduitController(ProduitService produitService, IngredientRepository ingredientRepository) {
+    public ProduitController(ProduitService produitService, IngredientRepository ingredientRepository, CategorieproduitRepository categorieproduitRepository) {
         this.produitService = produitService;
         this.ingredientRepository = ingredientRepository;
+        this.categorieproduitRepository = categorieproduitRepository;
     }
 
     @GetMapping("/form")
@@ -27,6 +32,13 @@ public class ProduitController {
             .addObject("content", "produit/form.jsp")
             .addObject("ingredients", ingredientRepository.findAll());
 
+    }
+    @GetMapping("/search")
+    public ModelAndView recherche(@RequestParam Ingredient idIngredient, @RequestParam Categorieproduit idCategorie) {
+        ModelAndView mav = new ModelAndView("template");
+        mav.addObject("produits", produitService.checkProduit(idIngredient,idCategorie));
+        mav.addObject("content", "produit/list.jsp");
+        return mav;
     }
 
     @PostMapping("/save")
@@ -39,6 +51,8 @@ public class ProduitController {
     public ModelAndView list() {
         ModelAndView mav = new ModelAndView("template");
         mav.addObject("produits", produitService.getAll());
+        mav.addObject("categ", ingredientRepository.findAll());
+        mav.addObject("ing", categorieproduitRepository.findAll());
         mav.addObject("content", "produit/list.jsp");
         return mav;
     }

@@ -1,8 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
 <%@ page import="org.main.boulangerie.produit.Produit" %>
+<%@ page import="org.main.boulangerie.categorie.Categorieproduit" %>
+<%@ page import="org.main.boulangerie.ingredient.Ingredient" %>
 <%
     List<Produit> produits = (List<Produit>) request.getAttribute("produits");
+    List<Categorieproduit> categ = (List<Categorieproduit>) request.getAttribute("categ");
+    List<Ingredient> ing = (List<Ingredient>) request.getAttribute("ing");
 %>
 <!doctype html>
 <html lang="en">
@@ -14,6 +18,27 @@
             <h5 class="mb-0">Liste des produits</h5>
             <a href="/produit/form"><button type="button" class="btn btn-dark mb-3">Cree un produit</button></a>
         </div>
+        <form action="produit/search" method="get">
+            <div class="mb-6">
+                <label class="form-label" for="basic-default-categ">Categorie :</label>
+                <select name="idCategorie" id="basic-default-categ" class="form-select">
+                    <% for (Categorieproduit c : categ) { %>
+                    <option value="<%= c.getId() %>"><%= c.getNom() %></option>
+                    <% } %>
+                </select>
+            </div>
+
+            <div class="mb-6">
+                <label class="form-label" for="basic-default-ing">Ingredient :</label>
+                <select name="idIngredient" id="basic-default-ing" class="form-select">
+                    <% for (Ingredient i : ing) { %>
+                    <option value="<%= i.getId() %>"><%= i.getIdmodel().getNom() %></option>
+                    <% } %>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+
+        </form>
         <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="mb-0"></h5>
             <small class="text-body float-end"></small>

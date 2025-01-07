@@ -5,6 +5,7 @@
 <%@ page import="org.main.boulangerie.ingredient.Ingredient" %>
 <%
     List<Ingredient> ingredients= (List<Ingredient>) request.getAttribute("ingredients");
+    List<Categorieproduit> categorieproduits= (List<Categorieproduit>) request.getAttribute("categories");
 %>
 <!doctype html>
 <html lang="en">
@@ -53,6 +54,15 @@
             <div class="mb-3">
                 <label class="form-label" for="prixvente">Prix de vente :</label>
                 <input type="number" step="0.01" class="form-control" id="prixvente" name="prixvente" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="basic-default-fournisseurId">Categorie :</label>
+                <select name="fournisseurId" id="basic-default-fournisseurId" class="form-select">
+                    <% for (Categorieproduit c : categorieproduits) { %>
+                    <option value="<%= c.getId() %>"><%= c.getNom() %></option>
+                    <% } %>
+                </select>
             </div>
 
             <div class="table-responsive text-nowrap">

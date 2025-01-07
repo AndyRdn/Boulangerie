@@ -5,6 +5,9 @@ import org.main.boulangerie.model.Model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.main.boulangerie.produit.produitDetails.ProduitDetail;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -29,5 +32,8 @@ public class Produit {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idcategorie")
     private Categorieproduit idcategorie;
+
+    @OneToMany(fetch = FetchType.LAZY , mappedBy = "idproduit")
+    private List<ProduitDetail> details;
 
 }

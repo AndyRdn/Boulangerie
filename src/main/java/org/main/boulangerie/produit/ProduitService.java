@@ -1,6 +1,9 @@
 package org.main.boulangerie.produit;
 
+import org.main.boulangerie.categorie.Categorieproduit;
 import org.main.boulangerie.categorie.CategorieproduitService;
+import org.main.boulangerie.ingredient.Ingredient;
+import org.main.boulangerie.ingredient.IngredientRepository;
 import org.main.boulangerie.model.Model;
 import org.main.boulangerie.model.ModelRepository;
 import org.main.boulangerie.model.ModelService;
@@ -9,24 +12,24 @@ import org.main.boulangerie.produit.produitDetails.ProduitDetailRepository;
 import org.main.boulangerie.typemodel.TypemodelRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class ProduitService {
     private final ProduitRepository produitRepository;
+
     private final ModelService modelService;
     private final TypemodelRepository typemodelRepository;
-    private final CategorieproduitService categorieproduitService;
     private final ModelRepository modelRepository;
     private final ProduitDetailRepository produitDetailRepository;
 
-    public ProduitService(ProduitRepository produitRepository, ModelService modelService, TypemodelRepository typemodelRepository, CategorieproduitService categorieproduitService,
+    public ProduitService(ProduitRepository produitRepository, ModelService modelService, TypemodelRepository typemodelRepository,
                           ModelRepository modelRepository,
                           ProduitDetailRepository produitDetailRepository) {
         this.produitRepository = produitRepository;
         this.modelService = modelService;
         this.typemodelRepository = typemodelRepository;
-        this.categorieproduitService = categorieproduitService;
         this.modelRepository = modelRepository;
         this.produitDetailRepository = produitDetailRepository;
     }
@@ -58,6 +61,23 @@ public class ProduitService {
             temp.setIdproduit(merProd);
             produitDetailRepository.save(temp);
         }
+    }
+
+    public List<Produit> checkProduit(Ingredient ingredient, Categorieproduit categorie) {
+        List<Produit> painBeurres = new ArrayList<>();
+
+        List<Produit> produits = produitRepository.findByIdcategorie_Id(categorie.getId());
+
+        for (Produit produit : produits) {
+            List<ProduitDetail> details = produit.getDetails();
+            for (ProduitDetail detail : details) {
+                if (detail.getIdingredient().getId().equals(ingredient.getId())) {
+                    painBeurres.add(produit);
+                    break;
+                }
+            }
+        }
+        return painBeurres;
     }
 
 //    public void update(Integer id, ProduitForm form) {
