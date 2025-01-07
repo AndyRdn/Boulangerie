@@ -141,45 +141,206 @@
             <ul class="menu-inner py-1 ps">
                 <!-- Dashboards -->
                 <!-- Front Pages -->
-                <%
 
-                    String[] modules = {"categorie", "client", "employe", "fournisseur", "model", "produit", "typemodel"};
-                    String selectedModule = request.getParameter("module");
-                    if (selectedModule == null || selectedModule.isEmpty()) {
-                        selectedModule = "client";
-                    }
-                %>
-
-                <li class="menu-item open" style="">
+                <li class="menu-item" style="">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
                         <i class="menu-icon tf-icons bx bx-store"></i>
                         <div class="text-truncate">
-                            <form method="get" action="">
-                                <select name="module" onchange="this.form.submit()">
-                                    <% for (String module : modules) { %>
-                                    <option value="<%= module %>" <%= module.equals(selectedModule) ? "selected" : "" %>>
-                                        <%= module %>
-                                    </option>
-                                    <% } %>
-                                </select>
-                            </form>
+                            achat
                         </div>
                     </a>
                     <ul class="menu-sub">
                         <li class="menu-item">
-                            <a href="<%= request.getContextPath() %>/<%= selectedModule %>/list" class="menu-link">
-                                <div class="text-truncate" data-i18n="List">List</div>
+                            <a href="/achat/list" class="menu-link">
+                                <div class="text-truncate">List</div>
                             </a>
                         </li>
                         <li class="menu-item">
-                            <a href="<%= request.getContextPath() %>/<%= selectedModule %>/form" class="menu-link">
-                                <div class="text-truncate" data-i18n="Insertion">Insertion</div>
+                            <a href="/achat/form" class="menu-link">
+                                <div class="text-truncate" >Insertion</div>
                             </a>
                         </li>
                     </ul>
                 </li>
-=======
-  
+
+                <li class="menu-item" style="">
+                    <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons bx bx-store"></i>
+                        <div class="text-truncate">
+                            client
+                        </div>
+                    </a>
+                    <ul class="menu-sub">
+                        <li class="menu-item">
+                            <a href="/client/list" class="menu-link">
+                                <div class="text-truncate">List</div>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="/client/form" class="menu-link">
+                                <div class="text-truncate" >Insertion</div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="menu-item" style="">
+                    <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons bx bx-store"></i>
+                        <div class="text-truncate">
+                            Fournisseur
+                        </div>
+                    </a>
+                    <ul class="menu-sub">
+                        <li class="menu-item">
+                            <a href="/fournisseur/list" class="menu-link">
+                                <div class="text-truncate">List</div>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="/fournisseur/form" class="menu-link">
+                                <div class="text-truncate" >Insertion</div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="menu-item " style="">
+                    <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons bx bx-store"></i>
+                        <div class="text-truncate">
+                            Employer
+                        </div>
+                    </a>
+                    <ul class="menu-sub">
+                        <li class="menu-item">
+                            <a href="/employe/list" class="menu-link">
+                                <div class="text-truncate">List</div>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="/employe/form" class="menu-link">
+                                <div class="text-truncate" >Insertion</div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="menu-item " style="">
+                    <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons bx bx-store"></i>
+                        <div class="text-truncate">
+                            Categorie
+                        </div>
+                    </a>
+                    <ul class="menu-sub">
+                        <li class="menu-item">
+                            <a href="/categorie/list" class="menu-link">
+                                <div class="text-truncate">List</div>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="/categorie/form" class="menu-link">
+                                <div class="text-truncate" >Insertion</div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="menu-item " style="">
+                    <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons bx bx-store"></i>
+                        <div class="text-truncate">Ingredient</div>
+                    </a>
+                    <ul class="menu-sub">
+                        <li class="menu-item">
+                            <a href="/ingredient/list" class="menu-link">
+                                <div class="text-truncate">List</div>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="/ingredient/form" class="menu-link">
+                                <div class="text-truncate" >Insertion</div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menu-item " style="">
+                    <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons bx bx-store"></i>
+                        <div class="text-truncate">Model</div>
+                    </a>
+                    <ul class="menu-sub">
+                        <li class="menu-item">
+                            <a href="/model/list" class="menu-link">
+                                <div class="text-truncate">List</div>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="/model/form" class="menu-link">
+                                <div class="text-truncate" >Insertion</div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="menu-item " style="">
+                    <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons bx bx-store"></i>
+                        <div class="text-truncate">Produit</div>
+                    </a>
+                    <ul class="menu-sub">
+                        <li class="menu-item">
+                            <a href="/produit/list" class="menu-link">
+                                <div class="text-truncate">List</div>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="/produit/form" class="menu-link">
+                                <div class="text-truncate" >Insertion</div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="menu-item " style="">
+                    <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons bx bx-store"></i>
+                        <div class="text-truncate">Stock</div>
+                    </a>
+                    <ul class="menu-sub">
+                        <li class="menu-item">
+                            <a href="/stock/list" class="menu-link">
+                                <div class="text-truncate">List</div>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="/stock/form" class="menu-link">
+                                <div class="text-truncate" >Insertion</div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="menu-item " style="">
+                    <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons bx bx-store"></i>
+                        <div class="text-truncate">Type Model</div>
+                    </a>
+                    <ul class="menu-sub">
+                        <li class="menu-item">
+                            <a href="/typemodel/list" class="menu-link">
+                                <div class="text-truncate">List</div>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="/typemodel/form" class="menu-link">
+                                <div class="text-truncate" >Insertion</div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
 
 
                 <!-- Apps & Pages -->
@@ -198,8 +359,8 @@
                         <div class="text-truncate" data-i18n="Chat">Chat</div>
                     </a>
                 </li>
-                <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; height: 1001px; right: 4px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 574px;"></div></div><div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 4px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></ul>
-
+                <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; height: 1001px; right: 4px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 574px;"></div></div><div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 4px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div>
+            </ul>
 
 
         </aside>
@@ -382,3 +543,41 @@
 </body>
 
 </html>
+
+
+
+
+<li class="menu-item active open">
+    <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons bx bx-home-smile"></i>
+        <div class="text-truncate" data-i18n="Dashboards">Dashboards</div>
+        <span class="badge rounded-pill bg-danger ms-auto">5</span>
+    </a>
+    <ul class="menu-sub">
+        <li class="menu-item active">
+            <a href="dashboards-analytics.html" class="menu-link">
+                <div class="text-truncate" data-i18n="Analytics">Analytics</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="dashboards-crm.html" class="menu-link">
+                <div class="text-truncate" data-i18n="CRM">CRM</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="app-ecommerce-dashboard.html" class="menu-link">
+                <div class="text-truncate" data-i18n="eCommerce">eCommerce</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="app-logistics-dashboard.html" class="menu-link">
+                <div class="text-truncate" data-i18n="Logistics">Logistics</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="app-academy-dashboard.html" class="menu-link">
+                <div class="text-truncate" data-i18n="Academy">Academy</div>
+            </a>
+        </li>
+    </ul>
+</li>

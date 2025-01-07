@@ -1,5 +1,7 @@
 package org.main.boulangerie.achat;
 
+import org.main.boulangerie.achat.achatDetails.Achatdetail;
+import org.main.boulangerie.achat.achatDetails.AchatdetailRepository;
 import org.main.boulangerie.stock.Mvtstock;
 import org.main.boulangerie.stock.MvtstockRepository;
 import org.main.boulangerie.stock.Mvtstockdetail;
@@ -29,17 +31,16 @@ public class AchatService {
 
 
     public void saveAchat(Achat achat, List<Achatdetail> details) {
-        achatRepository.save(achat);
         Mvtstock mvtStock = new Mvtstock();
         mvtStock.setDaty(achat.getDaty());
-        mvtStockRepository.save(mvtStock);
+        Mvtstock src=mvtStockRepository.save(mvtStock);
 
         for (Achatdetail detail : details) {
             detail.setIdachat(achat);
             achatdetailRepository.save(detail);
 
             Mvtstockdetail mvtStockDetail = new Mvtstockdetail();
-            mvtStockDetail.setIdmvtstock(mvtStock);
+            mvtStockDetail.setIdmvtstock(src);
             mvtStockDetail.setIdmodel(detail.getIdingredient().getIdmodel());
             mvtStockDetail.setEntree(detail.getQuantite());
             mvtStockDetail.setSortie(0);

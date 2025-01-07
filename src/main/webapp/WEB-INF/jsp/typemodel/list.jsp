@@ -12,10 +12,10 @@
     <div class="card mb-6">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="mb-0">Liste des types de modèles</h5>
-            <a href="/typemodel/form" class="btn btn-primary">Ajouter un nouveau type</a>
+            <a href="/typemodel/form"><button class="btn btn-dark">Ajouter un nouveau type</button></a>
         </div>
-        <div class="card-body">
-            <table class="table table-bordered">
+        <div class="table-responsive">
+            <table class="table">
                 <thead>
                     <tr>
                         <th>Id</th>

@@ -1,5 +1,7 @@
 package org.main.boulangerie.achat;
 
+import org.main.boulangerie.achat.achatDetails.Achatdetail;
+import org.main.boulangerie.achat.achatDetails.AchatdetailRepository;
 import org.main.boulangerie.fournisseur.Fournisseur;
 import org.main.boulangerie.fournisseur.FournisseurRepository;
 import org.main.boulangerie.ingredient.Ingredient;
@@ -17,13 +19,19 @@ public class AchatController {
     private final AchatService achatService;
     private final FournisseurRepository fournisseurRepository;
     private final IngredientService ingredientService;
+    private final AchatRepository achatRepository;
+    private final AchatdetailRepository achatdetailRepository;
 
     public AchatController(AchatService achatService,
                            FournisseurRepository fournisseurRepository,
-                           IngredientService ingredientService) {
+                           IngredientService ingredientService,
+                           AchatRepository achatRepository,
+                           AchatdetailRepository achatdetailRepository) {
         this.achatService = achatService;
         this.fournisseurRepository = fournisseurRepository;
         this.ingredientService = ingredientService;
+        this.achatRepository = achatRepository;
+        this.achatdetailRepository = achatdetailRepository;
     }
 
     @GetMapping("/form")
@@ -36,26 +44,38 @@ public class AchatController {
     }
 
     @PostMapping("/save")
-    public String saveMultiple(@ModelAttribute AchatFormList achatFormList) {
-        for (AchatForm form : achatFormList.getForms()) {
+    public String saveMultiple(@ModelAttribute AchatForm form) {
+
+        System.out.println(form.getDaty());
+        System.out.println(form.getFournisseurId());
+
+//        for (AchatDetailForm achatDetailForm: achatForm.getDetails()){
+//            System.out.println(achatDetailForm.getIngredientId());
+//            System.out.println(achatDetailForm.getQuantite());
+//            System.out.println(achatDetailForm.getPrixUnitaire());
+//        }
+
             if (form.getDaty() != null && form.getFournisseurId() != null) {
                 Achat achat = new Achat();
                 achat.setDaty(form.getDaty());
                 Fournisseur fournisseur = fournisseurRepository.findById(form.getFournisseurId())
                         .orElseThrow(() -> new RuntimeException("Fournisseur introuvable"));
                 achat.setIdfournisseur(fournisseur);
-                List<Achatdetail> details = new ArrayList<>();
+                Achat src=achatRepository.save(achat);
+                List<Achatdetail> details=new ArrayList<>();
                 for (AchatDetailForm detailForm : form.getDetails()) {
                     Achatdetail detail = new Achatdetail();
+                    detail.setIdachat(src);
                     detail.setQuantite(detailForm.getQuantite());
                     detail.setPrixunitaire(detailForm.getPrixUnitaire());
                     Ingredient ingredient = ingredientService.getIngredientById(detailForm.getIngredientId());
                     detail.setIdingredient(ingredient);
-                    details.add(detail);
+
+                    details.add(achatdetailRepository.save(detail));
                 }
                 achatService.saveAchat(achat, details);
             }
-        }
+
         return "redirect:/achat/list";
     }
 

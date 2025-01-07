@@ -10,10 +10,10 @@
 <div class="card mb-6">
     <div class="card-header d-flex justify-content-between align-items-center">
         <h5 class="mb-0">Liste des achats</h5>
+        <a href="/achat/form"><button type="button" class="btn btn-dark mb-4">Effectuer un achat</button></a>
     </div>
-    <div class="card-body">
-        <a href="/achat/form"><button type="button" class="btn btn-primary mb-4">Ajouter un nouvel achat</button></a>
-        <table class="table table-bordered">
+    <div class="table-responsive">
+        <table class="table">
             <thead>
             <tr>
                 <th>Id</th>

@@ -9,12 +9,12 @@
 
 <div class="card mb-6">
     <div class="card-header d-flex justify-content-between align-items-center">
-        <h5 class="mb-0">Liste des catégories</h5>
-        <small class="text-body float-end">Toutes les catégories</small>
+        <h5>Liste des catégories</h5>
+        <a href="/categorie/form"><button type="button" class="btn btn-dark mb-4">Ajouter une nouvelle catégorie</button></a>
     </div>
-    <div class="card-body">
-        <a href="/categorie/form"><button type="button" class="btn btn-primary mb-4">Ajouter une nouvelle catégorie</button></a>
-        <table class="table table-bordered">
+    <div class="table-responsive">
+
+        <table class="table">
             <thead>
                 <tr>
                     <th>Id</th>
