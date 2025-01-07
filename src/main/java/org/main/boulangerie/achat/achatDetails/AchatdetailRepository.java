@@ -1,4 +1,4 @@
-package org.main.boulangerie.achat;
+package org.main.boulangerie.achat.achatDetails;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

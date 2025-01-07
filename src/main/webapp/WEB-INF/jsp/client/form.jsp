@@ -8,6 +8,7 @@
     </div>
     <div class="card-body">
         <form action="/client/save" method="post">
+
             <div class="mb-6">
                 <label class="form-label" for="basic-default-name">Nom :</label>
                 <input type="text" class="form-control" id="basic-default-name" placeholder="Nom...." name="nom" required>
@@ -22,7 +23,6 @@
 
         <a href="/client/list"><button type="submit" class="btn btn-dark">Retour à la liste des clients</button></a>
     </div>
-
 </div>
 
 </html>

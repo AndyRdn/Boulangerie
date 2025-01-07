@@ -9,10 +9,10 @@
 
 <div class="card mb-6">
     <div class="card-header d-flex justify-content-between align-items-center">
-        <h5 class="mb-0">Liste des employés</h5> <small class="text-body float-end">Tous les employés</small>
+        <h5>Liste des employés</h5>
+        <a href="/employe/form"><button type="button" class="btn btn-dark mb-4">Ajouter un nouvel employé</button></a>
     </div>
-    <div class="card-body">
-        <a href="/employe/form" class="btn btn-primary mb-3">Ajouter un nouvel employé</a>
+    <div class="table-responsive">
         <table class="table">
             <thead>
                 <tr>

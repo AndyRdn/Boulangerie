@@ -22,7 +22,4 @@ public class Ingredient {
     @Column(name = "prix")
     private Double prix;
 
-    @Column(name = "nom")
-    private String nom;
-
 }
