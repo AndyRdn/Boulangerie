@@ -1,6 +1,8 @@
 package org.main.boulangerie.produit;
 
 import org.main.boulangerie.categorie.CategorieproduitService;
+import org.main.boulangerie.ingredient.IngredientRepository;
+import org.main.boulangerie.ingredient.IngredientService;
 import org.main.boulangerie.model.ModelService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -12,21 +14,19 @@ import java.util.List;
 @RequestMapping("/produit")
 public class ProduitController {
     private final ProduitService produitService;
-    private final ModelService modelService;
-    private final CategorieproduitService categorieproduitService;
+    private final IngredientRepository ingredientRepository;
 
-    public ProduitController(ProduitService produitService, ModelService modelService, CategorieproduitService categorieproduitService) {
+    public ProduitController(ProduitService produitService, IngredientRepository ingredientRepository) {
         this.produitService = produitService;
-        this.modelService = modelService;
-        this.categorieproduitService = categorieproduitService;
+        this.ingredientRepository = ingredientRepository;
     }
 
     @GetMapping("/form")
     public ModelAndView form() {
-        ModelAndView mav = new ModelAndView("produit/form");
-        mav.addObject("models", modelService.getAll());
-        mav.addObject("categories", categorieproduitService.getAll());
-        return mav;
+        return new ModelAndView("template")
+            .addObject("content", "produit/form.jsp")
+            .addObject("ingredients", ingredientRepository.findAll());
+
     }
 
     @PostMapping("/save")
@@ -37,23 +37,24 @@ public class ProduitController {
 
     @GetMapping("/list")
     public ModelAndView list() {
-        ModelAndView mav = new ModelAndView("produit/list");
+        ModelAndView mav = new ModelAndView("template");
         mav.addObject("produits", produitService.getAll());
+        mav.addObject("content", "produit/list.jsp");
         return mav;
     }
 
-    @GetMapping("/formUpdate")
-    public ModelAndView formUpdate(@RequestParam("id") Integer id) {
-        ModelAndView mav = new ModelAndView("produit/update");
-        mav.addObject("produit", produitService.getById(id));
-        mav.addObject("models", modelService.getAll());
-        mav.addObject("categories", categorieproduitService.getAll());
-        return mav;
-    }
+//    @GetMapping("/formUpdate")
+//    public ModelAndView formUpdate(@RequestParam("id") Integer id) {
+//        return new ModelAndView("template")
+//            .addObject("content", "produit/update.jsp")
+//            .addObject("produit", produitService.getById(id))
+//            .addObject("models", modelService.getAll())
+//            .addObject("categories", categorieproduitService.getAll());
+//    }
 
     @PostMapping("/update")
     public String update(@RequestParam("id") Integer id, @ModelAttribute ProduitForm form) {
-        produitService.update(id, form);
+//        produitService.update(id, form);
         return "redirect:/produit/list";
     }
 

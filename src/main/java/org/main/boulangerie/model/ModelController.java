@@ -21,11 +21,12 @@ public class ModelController {
 
     @GetMapping("/form")
     public ModelAndView form() {
-        ModelAndView mav = new ModelAndView("model/form");
-        List<Typemodel> typemodels = typemodelService.getAll();
-        mav.addObject("typemodels", typemodels);
-        return mav;
+
+        return new ModelAndView("template")
+                .addObject("content", "model/form.jsp")
+                .addObject("typemodels", typemodelService.getAll());
     }
+
 
     @PostMapping("/save")
     public String save(@ModelAttribute ModelForm form) {
@@ -39,19 +40,18 @@ public class ModelController {
 
     @GetMapping("/list")
     public ModelAndView list() {
-        ModelAndView mav = new ModelAndView("model/list");
+        ModelAndView mav = new ModelAndView("template");
         mav.addObject("models", modelService.getAll());
+        mav.addObject("content", "model/list.jsp");
         return mav;
     }
 
     @GetMapping("/formUpdate")
     public ModelAndView formUpdate(@RequestParam("id") Integer id) {
-        ModelAndView mav = new ModelAndView("model/update");
-        Model model = modelService.getById(id);
-        List<Typemodel> typemodels = typemodelService.getAll();
-        mav.addObject("model", model);
-        mav.addObject("typemodels", typemodels);
-        return mav;
+        return new ModelAndView("template")
+            .addObject("content", "model/update.jsp")
+            .addObject("model", modelService.getById(id))
+            .addObject("typemodels", typemodelService.getAll());
     }
 
     @PostMapping("/update")

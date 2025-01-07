@@ -93,3 +93,10 @@ CREATE TABLE MvtStockDetails (
                                  sortie INT,
                                  prixUnitaire BIGINT
 );
+INSERT INTO Ingredient (idModel, prix)
+VALUES
+    (1, 5.99),
+    (1, 3.49),
+    (1, 7.99);
+ALTER TABLE Ingredient
+    ADD COLUMN nom VARCHAR(255);

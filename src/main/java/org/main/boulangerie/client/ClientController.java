@@ -15,7 +15,7 @@ public class ClientController {
 
     @GetMapping("/form")
     public ModelAndView form() {
-        return new ModelAndView("client/form");
+        return new ModelAndView("template").addObject("content","client/form.jsp");
     }
 
     @PostMapping("/save")
@@ -29,17 +29,19 @@ public class ClientController {
 
     @GetMapping("/list")
     public ModelAndView list() {
-        ModelAndView mav = new ModelAndView("client/list");
+        ModelAndView mav = new ModelAndView("template");
         mav.addObject("clients", clientService.getAll());
+        mav.addObject("content","client/list.jsp");
         return mav;
     }
 
     @GetMapping("/formUpdate")
-    public ModelAndView formUpdate(@RequestParam("id") Integer id) {
-        ModelAndView mav = new ModelAndView("client/update");
-        mav.addObject("client", clientService.getById(id));
-        return mav;
-    }
+public ModelAndView formUpdate(@RequestParam("id") Integer id) {
+    return new ModelAndView("template")
+        .addObject("content", "client/update.jsp")
+        .addObject("client", clientService.getById(id));
+}
+
 
     @PostMapping("/update")
     public String update(@RequestParam("id") Integer id, @ModelAttribute ClientForm form) {
