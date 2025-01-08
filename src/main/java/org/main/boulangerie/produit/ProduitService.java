@@ -63,15 +63,17 @@ public class ProduitService {
         }
     }
 
-    public List<Produit> checkProduit(Ingredient ingredient, Categorieproduit categorie) {
+    public List<Produit> checkProduit(Integer ingredient, Integer categorie) {
         List<Produit> painBeurres = new ArrayList<>();
 
-        List<Produit> produits = produitRepository.findByIdcategorie_Id(categorie.getId());
+        List<Produit> produits = produitRepository.findByIdcategorie_Id(categorie);
 
         for (Produit produit : produits) {
             List<ProduitDetail> details = produit.getDetails();
+            System.out.println("miditra");
             for (ProduitDetail detail : details) {
-                if (detail.getIdingredient().getId().equals(ingredient.getId())) {
+                System.out.println(detail.getIdingredient().getIdmodel().getNom());
+                if (detail.getIdingredient().getId().equals(ingredient)) {
                     painBeurres.add(produit);
                     break;
                 }
