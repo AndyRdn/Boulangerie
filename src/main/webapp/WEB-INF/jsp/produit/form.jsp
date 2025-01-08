@@ -4,7 +4,7 @@
 <%@ page import="org.main.boulangerie.categorie.Categorieproduit" %>
 <%@ page import="org.main.boulangerie.ingredient.Ingredient" %>
 <%
-    List<Ingredient> ingredients= (List<Ingredient>) request.getAttribute("ingredients");
+    List<Ingredient> ingredients= (List<Ingredient>) request.getAttribute("ingredient");
     List<Categorieproduit> categorieproduits= (List<Categorieproduit>) request.getAttribute("categories");
 %>
 <!doctype html>
@@ -58,7 +58,7 @@
 
             <div class="mb-3">
                 <label class="form-label" for="basic-default-fournisseurId">Categorie :</label>
-                <select name="fournisseurId" id="basic-default-fournisseurId" class="form-select">
+                <select name="idCategorie" id="basic-default-fournisseurId" class="form-select">
                     <% for (Categorieproduit c : categorieproduits) { %>
                     <option value="<%= c.getId() %>"><%= c.getNom() %></option>
                     <% } %>

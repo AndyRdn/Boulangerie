@@ -100,3 +100,10 @@ VALUES
     (1, 7.99);
 ALTER TABLE Ingredient
     ADD COLUMN nom VARCHAR(255);
+
+CREATE TABLE production (
+                            id SERIAL PRIMARY KEY ,
+                            idProduit int REFERENCES Produit(id),
+                            quantite int,
+                            prixUnitaire double precision
+ );

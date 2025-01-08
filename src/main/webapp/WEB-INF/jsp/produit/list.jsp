@@ -18,27 +18,30 @@
             <h5 class="mb-0">Liste des produits</h5>
             <a href="/produit/form"><button type="button" class="btn btn-dark mb-3">Cree un produit</button></a>
         </div>
-        <form action="produit/search" method="get">
-            <div class="mb-6">
-                <label class="form-label" for="basic-default-categ">Categorie :</label>
-                <select name="idCategorie" id="basic-default-categ" class="form-select">
-                    <% for (Categorieproduit c : categ) { %>
-                    <option value="<%= c.getId() %>"><%= c.getNom() %></option>
-                    <% } %>
-                </select>
-            </div>
+        <div class="card-body">
+            <form action="/produit/search" method="post">
+                <div class="mb-4">
+                    <label class="form-label" for="basic-default-categ">Categorie :</label>
+                    <select name="idCategorie" id="basic-default-categ" class="form-select">
+                        <% for (Categorieproduit c : categ) { %>
+                        <option value="<%= c.getId() %>"><%= c.getNom() %></option>
+                        <% } %>
+                    </select>
+                </div>
 
-            <div class="mb-6">
-                <label class="form-label" for="basic-default-ing">Ingredient :</label>
-                <select name="idIngredient" id="basic-default-ing" class="form-select">
-                    <% for (Ingredient i : ing) { %>
-                    <option value="<%= i.getId() %>"><%= i.getIdmodel().getNom() %></option>
-                    <% } %>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary">Search</button>
+                <div class="mb-4">
+                    <label class="form-label" for="basic-default-ing">Ingredient :</label>
+                    <select name="idIngredient" id="basic-default-ing" class="form-select">
+                        <% for (Ingredient i : ing) { %>
+                        <option value="<%= i.getId() %>"><%= i.getIdmodel().getNom() %></option>
+                        <% } %>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Search</button>
 
-        </form>
+            </form>
+        </div>
+
         <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="mb-0"></h5>
             <small class="text-body float-end"></small>

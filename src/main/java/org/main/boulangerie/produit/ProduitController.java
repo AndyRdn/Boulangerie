@@ -30,13 +30,18 @@ public class ProduitController {
     public ModelAndView form() {
         return new ModelAndView("template")
             .addObject("content", "produit/form.jsp")
-            .addObject("ingredients", ingredientRepository.findAll());
+            .addObject("categories", categorieproduitRepository.findAll())
+            .addObject("ingredient", ingredientRepository.findAll());
 
     }
-    @GetMapping("/search")
-    public ModelAndView recherche(@RequestParam Ingredient idIngredient, @RequestParam Categorieproduit idCategorie) {
+    @PostMapping("/search")
+    public ModelAndView recherche(@RequestParam Integer idIngredient, @RequestParam Integer idCategorie) {
         ModelAndView mav = new ModelAndView("template");
+        System.out.println(idIngredient);
+        System.out.println(idCategorie);
         mav.addObject("produits", produitService.checkProduit(idIngredient,idCategorie));
+        mav.addObject("categ", categorieproduitRepository.findAll());
+        mav.addObject("ing", ingredientRepository.findAll());
         mav.addObject("content", "produit/list.jsp");
         return mav;
     }
@@ -51,8 +56,8 @@ public class ProduitController {
     public ModelAndView list() {
         ModelAndView mav = new ModelAndView("template");
         mav.addObject("produits", produitService.getAll());
-        mav.addObject("categ", ingredientRepository.findAll());
-        mav.addObject("ing", categorieproduitRepository.findAll());
+        mav.addObject("categ", categorieproduitRepository.findAll());
+        mav.addObject("ing", ingredientRepository.findAll());
         mav.addObject("content", "produit/list.jsp");
         return mav;
     }
