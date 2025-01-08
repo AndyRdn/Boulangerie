@@ -4,9 +4,9 @@ import org.main.boulangerie.achat.achatDetails.Achatdetail;
 import org.main.boulangerie.achat.achatDetails.AchatdetailRepository;
 import org.main.boulangerie.stock.Mvtstock;
 import org.main.boulangerie.stock.MvtstockRepository;
-import org.main.boulangerie.stock.Mvtstockdetail;
+import org.main.boulangerie.stock.mvtStockDetails.Mvtstockdetail;
 import org.springframework.stereotype.Service;
-import org.main.boulangerie.stock.MvtstockdetailRepository;
+import org.main.boulangerie.stock.mvtStockDetails.MvtstockdetailRepository;
 
 import java.util.List;
 

@@ -6,7 +6,10 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.main.boulangerie.produit.produitDetails.ProduitDetail;
+import org.main.boulangerie.stock.Mvtstock;
+import org.main.boulangerie.stock.mvtStockDetails.Mvtstockdetail;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Getter
@@ -35,5 +38,22 @@ public class Produit {
 
     @OneToMany(fetch = FetchType.LAZY , mappedBy = "idproduit")
     private List<ProduitDetail> details;
+
+    public Mvtstock genereMvtStock(LocalDate date, int qte){
+        Mvtstock mvtstock=new Mvtstock();
+        mvtstock.setDaty(date);
+        for (ProduitDetail produitDetail:details){
+            Mvtstockdetail mvD= new Mvtstockdetail();
+            if (qte*produitDetail.getQuantite()<produitDetail.getIdingredient().getIdmodel().getStock()){
+                mvD.setIdmodel(produitDetail.getIdproduit().getIdmodel());
+                mvD.setSortie(qte*produitDetail.getQuantite());
+                mvD.setEntree(0);
+                mvD.setPrixunitaire(produitDetail.getIdingredient().getPrix());
+                mvtstock.getMvtstockdetails().add(mvD);
+            }
+//            mvD.setSortie(produitDetail.get);
+        }
+        return mvtstock;
+    }
 
 }

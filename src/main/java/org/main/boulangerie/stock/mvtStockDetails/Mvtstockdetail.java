@@ -1,9 +1,10 @@
-package org.main.boulangerie.stock;
+package org.main.boulangerie.stock.mvtStockDetails;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.main.boulangerie.model.Model;
+import org.main.boulangerie.stock.Mvtstock;
 
 @Getter
 @Setter
@@ -30,6 +31,6 @@ public class Mvtstockdetail {
     private Integer sortie;
 
     @Column(name = "prixunitaire")
-    private Long prixunitaire;
+    private Double prixunitaire;
 
 }
