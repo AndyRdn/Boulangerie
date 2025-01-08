@@ -1,4 +1,4 @@
-package org.main.boulangerie.stock;
+package org.main.boulangerie.stock.mvtStockDetails;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

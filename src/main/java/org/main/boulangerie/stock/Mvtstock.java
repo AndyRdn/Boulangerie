@@ -3,8 +3,10 @@ package org.main.boulangerie.stock;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.main.boulangerie.stock.mvtStockDetails.Mvtstockdetail;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -18,5 +20,8 @@ public class Mvtstock {
 
     @Column(name = "daty")
     private LocalDate daty;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "idmvtstock")
+    List<Mvtstockdetail> mvtstockdetails;
 
 }
