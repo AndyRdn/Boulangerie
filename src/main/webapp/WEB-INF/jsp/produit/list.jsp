@@ -63,7 +63,7 @@
                     for (Produit produit : produits) {
                 %>
                 <tr>
-                    <td><%= produit.getId() %></td>
+                    <td><a href="/produit/details?id=<%=produit.getId()%>"><%= produit.getId() %></a></td>
                     <td><%= produit.getNom() %></td>
                     <td><%= produit.getPrixvente() %></td>
                     <td><%= produit.getIdmodel().getNom() %></td>

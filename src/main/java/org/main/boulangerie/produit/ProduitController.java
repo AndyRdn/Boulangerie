@@ -82,4 +82,12 @@ public class ProduitController {
         produitService.delete(id);
         return "redirect:/produit/list";
     }
+
+    @GetMapping("/details")
+    public ModelAndView details(@RequestParam Produit id){
+        return new ModelAndView("template")
+                .addObject("content", "produit/details.jsp")
+                .addObject("produit", id);
+
+    }
 }
