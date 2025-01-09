@@ -306,16 +306,16 @@
                 <li class="menu-item " style="">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
                         <i class="menu-icon tf-icons bx bx-store"></i>
-                        <div class="text-truncate">Stock</div>
+                        <div class="text-truncate">Production</div>
                     </a>
                     <ul class="menu-sub">
                         <li class="menu-item">
-                            <a href="/stock/list" class="menu-link">
+                            <a href="/production/list" class="menu-link">
                                 <div class="text-truncate">List</div>
                             </a>
                         </li>
                         <li class="menu-item">
-                            <a href="/stock/form" class="menu-link">
+                            <a href="/production/form" class="menu-link">
                                 <div class="text-truncate" >Insertion</div>
                             </a>
                         </li>

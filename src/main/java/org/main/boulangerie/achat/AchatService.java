@@ -44,7 +44,7 @@ public class AchatService {
             mvtStockDetail.setIdmodel(detail.getIdingredient().getIdmodel());
             mvtStockDetail.setEntree(detail.getQuantite());
             mvtStockDetail.setSortie(0);
-            mvtStockDetail.setPrixunitaire(detail.getPrixunitaire().longValue());
+            mvtStockDetail.setPrixunitaire(detail.getPrixunitaire());
             mvtStockDetailsRepository.save(mvtStockDetail);
         }
     }

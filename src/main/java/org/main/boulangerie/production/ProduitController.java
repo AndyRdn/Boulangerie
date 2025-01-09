@@ -1,9 +1,0 @@
-package org.main.boulangerie.production;
-
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-@Controller
-@RequestMapping("/production")
-public class ProduitController {
-}

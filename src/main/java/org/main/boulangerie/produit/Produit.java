@@ -10,6 +10,7 @@ import org.main.boulangerie.stock.Mvtstock;
 import org.main.boulangerie.stock.mvtStockDetails.Mvtstockdetail;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -39,9 +40,10 @@ public class Produit {
     @OneToMany(fetch = FetchType.LAZY , mappedBy = "idproduit")
     private List<ProduitDetail> details;
 
-    public Mvtstock genereMvtStock(LocalDate date, int qte){
+    public Mvtstock genereMvtStock(LocalDate date, int qte) throws Exception {
         Mvtstock mvtstock=new Mvtstock();
         mvtstock.setDaty(date);
+        mvtstock.setMvtstockdetails(new ArrayList<>());
         for (ProduitDetail produitDetail:details){
             Mvtstockdetail mvD= new Mvtstockdetail();
             if (qte*produitDetail.getQuantite()<produitDetail.getIdingredient().getIdmodel().getStock()){
@@ -50,10 +52,22 @@ public class Produit {
                 mvD.setEntree(0);
                 mvD.setPrixunitaire(produitDetail.getIdingredient().getPrix());
                 mvtstock.getMvtstockdetails().add(mvD);
+            }else {
+                throw new Exception("Quantiter insuffisant");
             }
 //            mvD.setSortie(produitDetail.get);
         }
         return mvtstock;
+    }
+
+    public boolean checkIngredient(int idIngredient){
+        for (ProduitDetail detail : this.getDetails()) {
+//            System.out.println(detail.getIdingredient().getIdmodel().getNom());
+            if (detail.getIdingredient().getId().equals(idIngredient)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

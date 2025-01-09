@@ -105,5 +105,6 @@ CREATE TABLE production (
                             id SERIAL PRIMARY KEY ,
                             idProduit int REFERENCES Produit(id),
                             quantite int,
-                            prixUnitaire double precision
+                            prixUnitaire double precision,
+                            daty DATE
  );

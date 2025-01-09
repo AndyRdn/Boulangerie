@@ -1,9 +1,9 @@
 package org.main.boulangerie.production;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RequestParam;
 
-@Repository
+import java.util.List;
+
 public interface ProductionRepository extends JpaRepository<Production, Integer> {
+    List<Production> findByIdproduit_Idcategorie_Id(Integer id);
 }
