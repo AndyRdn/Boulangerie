@@ -1,3 +1,4 @@
+<%@ page import="javax.swing.*" %>
 <html lang="en" class="light-style layout-navbar-fixed layout-compact layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="../../assets/" data-template="vertical-menu-template" data-style="light">
 <head>
     <meta charset="utf-8">
@@ -463,8 +464,20 @@
                 <!-- Content -->
 
                 <div class="container-xxl flex-grow-1 container-p-y">
-
-
+<%--                    <%--%>
+<%--                        if (request.getSession().getAttribute("error") != null){--%>
+<%--                            %>--%>
+<%--                    <script>--%>
+<%--                        Swal.fire({--%>
+<%--                            title: 'Une erreur c\'est produite',--%>
+<%--                            text: '<%=request.getAttribute("error")%>',--%>
+<%--                            icon: '<%=Icon.%>',--%>
+<%--                            confirmButtonText: 'OK'--%>
+<%--                        });--%>
+<%--                    </script>--%>
+<%--                    <%--%>
+<%--                        }--%>
+<%--                    %>--%>
                     <!-- Basic Bootstrap Table -->
                         <jsp:include page="<%=content%>" />
                     <!--/ Basic Bootstrap Table -->
@@ -581,3 +594,5 @@
         </li>
     </ul>
 </li>
+
+<script src="${pageContext.request.contextPath}/assets/js/sweetalert2.js"></script>

@@ -1,10 +1,11 @@
 package org.main.boulangerie.produit;
 
-import org.main.boulangerie.categorie.Categorieproduit;
-import org.main.boulangerie.model.Model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.main.boulangerie.categorie.Categorieproduit;
+import org.main.boulangerie.model.Model;
+import org.main.boulangerie.parfum.Parfum;
 import org.main.boulangerie.produit.produitDetails.ProduitDetail;
 import org.main.boulangerie.stock.Mvtstock;
 import org.main.boulangerie.stock.mvtStockDetails.Mvtstockdetail;
@@ -37,6 +38,7 @@ public class Produit {
     @JoinColumn(name = "idcategorie")
     private Categorieproduit idcategorie;
 
+
     @OneToMany(fetch = FetchType.LAZY , mappedBy = "idproduit")
     private List<ProduitDetail> details;
 
@@ -47,7 +49,7 @@ public class Produit {
         for (ProduitDetail produitDetail:details){
             Mvtstockdetail mvD= new Mvtstockdetail();
             if (qte*produitDetail.getQuantite()<produitDetail.getIdingredient().getIdmodel().getStock()){
-                mvD.setIdmodel(produitDetail.getIdproduit().getIdmodel());
+                mvD.setIdmodel(produitDetail.getIdingredient().getIdmodel());
                 mvD.setSortie(qte*produitDetail.getQuantite());
                 mvD.setEntree(0);
                 mvD.setPrixunitaire(produitDetail.getIdingredient().getPrix());
@@ -66,6 +68,13 @@ public class Produit {
             if (detail.getIdingredient().getId().equals(idIngredient)) {
                 return true;
             }
+        }
+        return false;
+    }
+
+    public boolean checkParfum(int parfum){
+        for (ProduitDetail detail: this.getDetails()){
+            if (detail.getIdingredient().getIdparfum().getId().equals(parfum)) return true;
         }
         return false;
     }

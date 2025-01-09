@@ -1,5 +1,6 @@
 package org.main.boulangerie.production;
 
+import jakarta.servlet.http.HttpSession;
 import org.main.boulangerie.categorie.CategorieproduitRepository;
 import org.main.boulangerie.ingredient.IngredientRepository;
 import org.main.boulangerie.produit.ProduitService;
@@ -15,12 +16,14 @@ public class ProductionController {
     private final ProduitService produitService;
     private final IngredientRepository ingredientRepository;
     private final CategorieproduitRepository categorieproduitRepository;
+    private final HttpSession session;
 
-    public ProductionController(ProductionService productionService, ProduitService produitService, IngredientRepository ingredientRepository, CategorieproduitRepository categorieproduitRepository) {
+    public ProductionController(ProductionService productionService, ProduitService produitService, IngredientRepository ingredientRepository, CategorieproduitRepository categorieproduitRepository, HttpSession session) {
         this.productionService = productionService;
         this.produitService = produitService;
         this.ingredientRepository = ingredientRepository;
         this.categorieproduitRepository = categorieproduitRepository;
+        this.session = session;
     }
 
     @GetMapping("/list")
@@ -51,8 +54,15 @@ public class ProductionController {
 
     @PostMapping("/save")
     public String save(@ModelAttribute Production prod) throws Exception {
-        productionService.save(prod);
-        return "redirect:/production/list";
+        try{
+            productionService.save(prod);
+            return "redirect:/production/list";
+        }catch (Exception e){
+            session.setAttribute("error","Quantiter de stock insuffisant");
+            return "redirect:/production/form";
+
+        }
+
     }
 
 

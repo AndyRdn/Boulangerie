@@ -2,6 +2,7 @@ package org.main.boulangerie.ingredient;
 
 import org.main.boulangerie.model.Model;
 import org.main.boulangerie.model.ModelRepository;
+import org.main.boulangerie.parfum.ParfumRepository;
 import org.springframework.boot.Banner;
 import org.springframework.stereotype.Service;
 
@@ -11,10 +12,12 @@ import java.util.List;
 public class IngredientService {
     private final IngredientRepository ingredientRepository;
     private final ModelRepository modelRepository;
+    private final ParfumRepository parfumRepository;
 
-    public IngredientService(IngredientRepository ingredientRepository, ModelRepository modelRepository) {
+    public IngredientService(IngredientRepository ingredientRepository, ModelRepository modelRepository, ParfumRepository parfumRepository) {
         this.ingredientRepository =ingredientRepository;
         this.modelRepository = modelRepository;
+        this.parfumRepository = parfumRepository;
     }
 
     public List<Ingredient> getAllIngredients() {
@@ -36,6 +39,7 @@ public class IngredientService {
         Ingredient iNouv= new Ingredient();
         iNouv.setPrix(ingredientForm.getPrix());
         iNouv.setIdmodel(conf);
+        iNouv.setIdparfum(parfumRepository.findById(ingredientForm.getPrafum()).get());
         ingredientRepository.save(iNouv);
     }
 }

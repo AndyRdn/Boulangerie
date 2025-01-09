@@ -35,7 +35,8 @@ CREATE TABLE CategorieProduit (
 CREATE TABLE Ingredient (
                             id SERIAL PRIMARY KEY,
                             idModel INT REFERENCES Model(id),
-                            prix DOUBLE PRECISION
+                            prix DOUBLE PRECISION,
+                            idparfum int references parfum(id)
 );
 
 CREATE TABLE Produit (
@@ -108,3 +109,23 @@ CREATE TABLE production (
                             prixUnitaire double precision,
                             daty DATE
  );
+
+create table parfum(
+                    id serial primary key ,
+                    nom varchar(255)
+);
+
+CREATE TABLE Produit (
+                        id SERIAL PRIMARY KEY,
+                        nom VARCHAR(255),
+                        idModel INT REFERENCES Model(id),
+                        prixVente DOUBLE PRECISION,
+                        idCategorie BIGINT REFERENCES CategorieProduit(id)
+);
+
+CREATE TABLE Ingredient (
+                            id SERIAL PRIMARY KEY,
+                            idModel INT REFERENCES Model(id),
+                            prix DOUBLE PRECISION,
+                            idparfum int references parfum(id)
+);

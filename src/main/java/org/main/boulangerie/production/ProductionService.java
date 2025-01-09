@@ -1,6 +1,4 @@
 package org.main.boulangerie.production;
-import org.main.boulangerie.produit.Produit;
-import org.main.boulangerie.produit.produitDetails.ProduitDetail;
 import org.main.boulangerie.stock.MvtStockService;
 import org.main.boulangerie.stock.Mvtstock;
 

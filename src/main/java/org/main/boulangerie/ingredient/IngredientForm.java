@@ -9,6 +9,16 @@ public class IngredientForm {
     Typemodel typeModel;
     double prix;
 
+    int prafum;
+
+    public int getPrafum() {
+        return prafum;
+    }
+
+    public void setPrafum(int prafum) {
+        this.prafum = prafum;
+    }
+
     public String getNom() {
         return nom;
     }
