@@ -1,6 +1,8 @@
 package org.main.boulangerie.vente;
 
+import org.main.boulangerie.categorie.CategorieproduitRepository;
 import org.main.boulangerie.client.ClientRepository;
+import org.main.boulangerie.parfum.ParfumRepository;
 import org.main.boulangerie.produit.ProduitRepository;
 import org.main.boulangerie.produit.ProduitService;
 import org.main.boulangerie.stock.MvtstockRepository;
@@ -19,17 +21,20 @@ public class VenteController {
     private final VenteService venteService;
     private final VenteRepository venteRepository;
     private final VentedetailRepository ventedetailRepository;
-    private final MvtstockRepository mvtStockRepository;
     private final ProduitService produitService;
     private final ClientRepository clientRepository;
 
+    private final CategorieproduitRepository categorieproduitRepository;
+    private final ParfumRepository parfumRepository;
+
     public VenteController(VenteService venteService, VenteRepository venteRepository,
-                           VentedetailRepository ventedetailRepository, MvtstockRepository mvtStockRepository, ProduitService produitService,
-                           ClientRepository clientRepository) {
+                           VentedetailRepository ventedetailRepository, ProduitService produitService,
+                           ClientRepository clientRepository, CategorieproduitRepository categorieproduitRepository, ParfumRepository parfumRepository) {
         this.venteService = venteService;
         this.venteRepository = venteRepository;
         this.ventedetailRepository = ventedetailRepository;
-        this.mvtStockRepository = mvtStockRepository;
+        this.categorieproduitRepository = categorieproduitRepository;
+        this.parfumRepository = parfumRepository;
         this.produitService = produitService;
         this.clientRepository = clientRepository;
     }
@@ -65,6 +70,26 @@ public class VenteController {
             venteService.saveVente(savedVente, details);
         }
         return "redirect:/vente/form";
+    }
+
+    @GetMapping("/list")
+    public ModelAndView listeVenteDetail(){
+        return new ModelAndView("template").addObject("content","production/list.jsp")
+                .addObject("vent",ventedetailRepository.findAll())
+                .addObject("categ", categorieproduitRepository.findAll())
+                .addObject("parf", parfumRepository.findAll());
+    }
+
+    @PostMapping("/search")
+    public ModelAndView recherche(@RequestParam Integer idparfum, @RequestParam Integer idCategorie) {
+        ModelAndView mav = new ModelAndView("template");
+        System.out.println(idparfum);
+        System.out.println(idCategorie);
+        mav.addObject("vent", venteService.checkParfum(idCategorie,idparfum));
+        mav.addObject("categ", categorieproduitRepository.findAll());
+        mav.addObject("parf", parfumRepository.findAll());
+        mav.addObject("content", "produit/list.jsp");
+        return mav;
     }
 
 }
