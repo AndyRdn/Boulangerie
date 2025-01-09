@@ -70,14 +70,15 @@ CREATE TABLE achatDetails (
 CREATE TABLE Vente (
                        id SERIAL PRIMARY KEY,
                        daty DATE,
-                       idClient INT REFERENCES Client(id),
-                       quantite BIGINT
+                       idClient INT REFERENCES Client(id)
+
 );
 
 CREATE TABLE VenteDetails (
                               id SERIAL PRIMARY KEY,
                               idVente INT REFERENCES Vente(id),
-                              idProduit INT REFERENCES Produit(id)
+                              idProduit INT REFERENCES Produit(id),
+                              quantite INT
 );
 
 CREATE TABLE MvtStock (
