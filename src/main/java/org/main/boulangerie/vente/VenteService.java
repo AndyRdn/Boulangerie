@@ -47,8 +47,8 @@ public class VenteService {
             mvtStockDetailsRepository.save(mvtStockDetail);
         }
     }
-//    public List<Ventedetail> listeVenteDetail(){
-//
-//    }
+    public List<Ventedetail> listeVenteDetail(){
+        return ventedetailRepository.findAll();
+    }
 
 }
