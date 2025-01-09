@@ -35,11 +35,11 @@
                 <td><%= ingredient.getIdmodel().getIdtypeproduit().getNom()%></td>
                 <td><%= ingredient.getPrix() %></td>
                 <td>
-                    <a href="/categorie/formUpdate?id=<%= ingredient.getId() %>" class="btn btn-warning btn-sm">Modifier</a>
-                    <form action="/categorie/delete" method="post" style="display: inline;">
-                        <input type="hidden" name="id" value="<%= ingredient.getId() %>">
-                        <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
-                    </form>
+<%--                    <a href="/categorie/formUpdate?id=<%= ingredient.getId() %>" class="btn btn-warning btn-sm">Modifier</a>--%>
+<%--                    <form action="/categorie/delete" method="post" style="display: inline;">--%>
+<%--                        <input type="hidden" name="id" value="<%= ingredient.getId() %>">--%>
+<%--                        <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>--%>
+<%--                    </form>--%>
                 </td>
             </tr>
             <%

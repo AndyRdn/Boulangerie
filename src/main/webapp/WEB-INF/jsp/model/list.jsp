@@ -33,10 +33,10 @@
                     <td><%= model.getIdtypeproduit().getNom() %></td>
                     <td>
                         <a href="/model/formUpdate?id=<%= model.getId() %>" class="btn btn-warning btn-sm">Modifier</a>
-                        <form action="/model/delete" method="post" style="display: inline;">
-                            <input type="hidden" name="id" value="<%= model.getId() %>">
-                            <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
-                        </form>
+<%--                        <form action="/model/delete" method="post" style="display: inline;">--%>
+<%--                            <input type="hidden" name="id" value="<%= model.getId() %>">--%>
+<%--                            <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>--%>
+<%--                        </form>--%>
                     </td>
                 </tr>
                 <%
