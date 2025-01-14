@@ -130,3 +130,10 @@ CREATE TABLE Ingredient (
                             idModel INT REFERENCES Model(id),
                             prix DOUBLE PRECISION
 );
+
+CREATE TABLE Conseiller (
+                            id serial primary key ,
+                            idProduit int references Produit(id),
+                            mois int,
+                            annee int
+);
