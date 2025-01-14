@@ -3,6 +3,7 @@
 <%@ page import="org.main.boulangerie.model.Model" %>
 <%@ page import="org.main.boulangerie.categorie.Categorieproduit" %>
 <%@ page import="org.main.boulangerie.typemodel.Typemodel" %>
+<%@ page import="org.main.boulangerie.parfum.Parfum" %>
 <%
     List<Typemodel> tModels = (List<Typemodel>) request.getAttribute("typeModels");
 %>

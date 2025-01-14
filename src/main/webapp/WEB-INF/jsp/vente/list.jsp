@@ -6,7 +6,7 @@
 <%@ page import="org.main.boulangerie.parfum.Parfum" %>
 <%@ page import="org.main.boulangerie.vente.ventedetail.Ventedetail" %>
 <%
-    List<Ventedetail> production = (List<Ventedetail>) request.getAttribute("prod");
+    List<Ventedetail> production = (List<Ventedetail>) request.getAttribute("vente");
     List<Categorieproduit> categ = (List<Categorieproduit>) request.getAttribute("categ");
     List<Parfum> ing = (List<Parfum>) request.getAttribute("parf");
 %>
@@ -17,7 +17,7 @@
 <div class="container mt-4">
     <div class="card mb-6">
         <div class="card-header d-flex justify-content-between align-items-center">
-            <h5 class="mb-0">Liste des production</h5>
+            <h5 class="mb-0">Liste des Vente</h5>
             <a href="/vente/form"><button type="button" class="btn btn-dark mb-3">Cree un produit</button></a>
         </div>
         <div class="card-body">
@@ -33,7 +33,7 @@
 
                 <div class="mb-4">
                     <label class="form-label" for="basic-default-ing">Parfum :</label>
-                    <select name="idParfum" id="basic-default-ing" class="form-select">
+                    <select name="idparfum" id="basic-default-ing" class="form-select">
                         <% for (Parfum i : ing) { %>
                         <option value="<%= i.getId() %>"><%= i.getNom() %></option>
                         <% } %>
@@ -57,7 +57,7 @@
                     <th>Prix Unitaire</th>
                     <th>Quantiter</th>
                     <th>Catégorie</th>
-                    <th>Actions</th>
+<%--                    <th>Actions</th>--%>
                 </tr>
                 </thead>
                 <tbody>
@@ -67,6 +67,7 @@
                 <tr>
                     <td><%= product.getId() %></td>
                     <td><%= product.getIdproduit().getNom() %></td>
+                    <td><%= product.getIdproduit().getPrixvente() %></td>
 
                     <td><%= product.getQuantite() %></td>
                     <td><%= product.getIdproduit().getIdcategorie().getNom() %></td>

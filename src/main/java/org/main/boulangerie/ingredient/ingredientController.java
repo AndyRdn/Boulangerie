@@ -2,6 +2,7 @@ package org.main.boulangerie.ingredient;
 
 import org.main.boulangerie.model.Model;
 import org.main.boulangerie.model.ModelForm;
+import org.main.boulangerie.parfum.ParfumRepository;
 import org.main.boulangerie.typemodel.Typemodel;
 import org.main.boulangerie.typemodel.TypemodelRepository;
 import org.springframework.stereotype.Controller;
@@ -17,10 +18,12 @@ public class ingredientController {
 
     private final IngredientService ingredientService;
     private final TypemodelRepository typemodelRepository;
+    private final ParfumRepository parfumRepository;
 
-    public ingredientController(IngredientService ingredientService, TypemodelRepository typemodelRepository) {
+    public ingredientController(IngredientService ingredientService, TypemodelRepository typemodelRepository, ParfumRepository parfumRepository) {
         this.ingredientService = ingredientService;
         this.typemodelRepository = typemodelRepository;
+        this.parfumRepository = parfumRepository;
     }
 
     @GetMapping("/form")

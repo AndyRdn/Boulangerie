@@ -7,6 +7,7 @@ import org.main.boulangerie.ingredient.Ingredient;
 import org.main.boulangerie.ingredient.IngredientRepository;
 import org.main.boulangerie.ingredient.IngredientService;
 import org.main.boulangerie.model.ModelService;
+import org.main.boulangerie.parfum.ParfumRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,11 +20,13 @@ public class ProduitController {
     private final ProduitService produitService;
     private final IngredientRepository ingredientRepository;
     private final CategorieproduitRepository categorieproduitRepository;
+    private final ParfumRepository parfumRepository;
 
-    public ProduitController(ProduitService produitService, IngredientRepository ingredientRepository, CategorieproduitRepository categorieproduitRepository) {
+    public ProduitController(ProduitService produitService, IngredientRepository ingredientRepository, CategorieproduitRepository categorieproduitRepository, ParfumRepository parfumRepository) {
         this.produitService = produitService;
         this.ingredientRepository = ingredientRepository;
         this.categorieproduitRepository = categorieproduitRepository;
+        this.parfumRepository = parfumRepository;
     }
 
     @GetMapping("/form")
@@ -31,7 +34,9 @@ public class ProduitController {
         return new ModelAndView("template")
             .addObject("content", "produit/form.jsp")
             .addObject("categories", categorieproduitRepository.findAll())
-            .addObject("ingredient", ingredientRepository.findAll());
+            .addObject("ingredient", ingredientRepository.findAll())
+            .addObject("parf", parfumRepository.findAll());
+
 
     }
     @PostMapping("/search")

@@ -12,12 +12,9 @@ import java.util.List;
 public class IngredientService {
     private final IngredientRepository ingredientRepository;
     private final ModelRepository modelRepository;
-    private final ParfumRepository parfumRepository;
-
-    public IngredientService(IngredientRepository ingredientRepository, ModelRepository modelRepository, ParfumRepository parfumRepository) {
+     public IngredientService(IngredientRepository ingredientRepository, ModelRepository modelRepository) {
         this.ingredientRepository =ingredientRepository;
         this.modelRepository = modelRepository;
-        this.parfumRepository = parfumRepository;
     }
 
     public List<Ingredient> getAllIngredients() {
@@ -39,7 +36,7 @@ public class IngredientService {
         Ingredient iNouv= new Ingredient();
         iNouv.setPrix(ingredientForm.getPrix());
         iNouv.setIdmodel(conf);
-        iNouv.setIdparfum(parfumRepository.findById(ingredientForm.getPrafum()).get());
+
         ingredientRepository.save(iNouv);
     }
 }

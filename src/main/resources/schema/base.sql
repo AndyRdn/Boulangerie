@@ -121,12 +121,12 @@ CREATE TABLE Produit (
                         nom VARCHAR(255),
                         idModel INT REFERENCES Model(id),
                         prixVente DOUBLE PRECISION,
-                        idCategorie BIGINT REFERENCES CategorieProduit(id)
+                        idCategorie BIGINT REFERENCES CategorieProduit(id),
+                        idparfum int references parfum(id)
 );
 
 CREATE TABLE Ingredient (
                             id SERIAL PRIMARY KEY,
                             idModel INT REFERENCES Model(id),
-                            prix DOUBLE PRECISION,
-                            idparfum int references parfum(id)
+                            prix DOUBLE PRECISION
 );

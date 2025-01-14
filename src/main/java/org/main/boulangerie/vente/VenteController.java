@@ -74,8 +74,8 @@ public class VenteController {
 
     @GetMapping("/list")
     public ModelAndView listeVenteDetail(){
-        return new ModelAndView("template").addObject("content","production/list.jsp")
-                .addObject("vent",ventedetailRepository.findAll())
+        return new ModelAndView("template").addObject("content","vente/list.jsp")
+                .addObject("vente",ventedetailRepository.findAll())
                 .addObject("categ", categorieproduitRepository.findAll())
                 .addObject("parf", parfumRepository.findAll());
     }
@@ -85,10 +85,10 @@ public class VenteController {
         ModelAndView mav = new ModelAndView("template");
         System.out.println(idparfum);
         System.out.println(idCategorie);
-        mav.addObject("vent", venteService.checkParfum(idCategorie,idparfum));
+        mav.addObject("vente", venteService.checkParfum(idCategorie,idparfum));
         mav.addObject("categ", categorieproduitRepository.findAll());
         mav.addObject("parf", parfumRepository.findAll());
-        mav.addObject("content", "produit/list.jsp");
+        mav.addObject("content", "vente/list.jsp");
         return mav;
     }
 

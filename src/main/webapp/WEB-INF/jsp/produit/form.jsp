@@ -3,9 +3,11 @@
 <%@ page import="org.main.boulangerie.model.Model" %>
 <%@ page import="org.main.boulangerie.categorie.Categorieproduit" %>
 <%@ page import="org.main.boulangerie.ingredient.Ingredient" %>
+<%@ page import="org.main.boulangerie.parfum.Parfum" %>
 <%
     List<Ingredient> ingredients= (List<Ingredient>) request.getAttribute("ingredient");
     List<Categorieproduit> categorieproduits= (List<Categorieproduit>) request.getAttribute("categories");
+    List<Parfum> parf = (List<Parfum>) request.getAttribute("parf");
 %>
 <!doctype html>
 <html lang="en">
@@ -50,6 +52,20 @@
                 <label class="form-label" for="nom">Nom :</label>
                 <input type="text" class="form-control" id="nom" name="nom" required>
             </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="parf">Parfum :</label>
+                <select class="form-control" id="parf" name="parfum" required>
+                    <%
+                        for (Parfum p : parf) {
+                    %>
+                    <option value="<%= p.getId() %>"><%= p.getNom() %></option>
+                    <%
+                        }
+                    %>
+                </select>
+            </div>
+
 
             <div class="mb-3">
                 <label class="form-label" for="prixvente">Prix de vente :</label>

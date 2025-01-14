@@ -13,6 +13,7 @@ public class ProduitForm {
     private String nom;
     private Double prixvente;
     private Categorieproduit idCategorie;
+    private Integer parfum;
     List<ProduitDetailForm> details;
 }
 

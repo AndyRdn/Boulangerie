@@ -342,6 +342,25 @@
                     </ul>
                 </li>
 
+                <li class="menu-item " style="">
+                    <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons bx bx-store"></i>
+                        <div class="text-truncate">Vente</div>
+                    </a>
+                    <ul class="menu-sub">
+                        <li class="menu-item">
+                            <a href="/vente/list" class="menu-link">
+                                <div class="text-truncate">List</div>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="/vente/form" class="menu-link">
+                                <div class="text-truncate" >Insertion</div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
 
 
                 <!-- Apps & Pages -->

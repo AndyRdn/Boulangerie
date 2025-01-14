@@ -23,8 +23,4 @@ public class Ingredient {
     @Column(name = "prix")
     private Double prix;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idparfum")
-    private Parfum idparfum;
-
 }

@@ -38,6 +38,10 @@ public class Produit {
     @JoinColumn(name = "idcategorie")
     private Categorieproduit idcategorie;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idparfum")
+    private Parfum idparfum;
+
 
     @OneToMany(fetch = FetchType.LAZY , mappedBy = "idproduit")
     private List<ProduitDetail> details;
@@ -73,10 +77,7 @@ public class Produit {
     }
 
     public boolean checkParfum(int parfum){
-        for (ProduitDetail detail: this.getDetails()){
-            if (detail.getIdingredient().getIdparfum().getId().equals(parfum)) return true;
-        }
-        return false;
+        return parfum==idparfum.getId();
     }
 
 }
