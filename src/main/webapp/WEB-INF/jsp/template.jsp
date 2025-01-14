@@ -361,23 +361,29 @@
                     </ul>
                 </li>
 
+                <li class="menu-item " style="">
+                    <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons bx bx-store"></i>
+                        <div class="text-truncate">Conseiller</div>
+                    </a>
+                    <ul class="menu-sub">
+                        <li class="menu-item">
+                            <a href="/conseiller/list" class="menu-link">
+                                <div class="text-truncate">List</div>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="/conseiller/form" class="menu-link">
+                                <div class="text-truncate" >Insertion</div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
 
                 <!-- Apps & Pages -->
                 <li class="menu-header small text-uppercase">
                     <span class="menu-header-text" data-i18n="Apps &amp; Pages">Apps &amp; Pages</span>
-                </li>
-                <li class="menu-item">
-                    <a href="app-email.html" class="menu-link">
-                        <i class="menu-icon tf-icons bx bx-envelope"></i>
-                        <div class="text-truncate" data-i18n="Email">Email</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="app-chat.html" class="menu-link">
-                        <i class="menu-icon tf-icons bx bx-chat"></i>
-                        <div class="text-truncate" data-i18n="Chat">Chat</div>
-                    </a>
                 </li>
                 <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; height: 1001px; right: 4px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 574px;"></div></div><div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 4px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div>
             </ul>
@@ -483,23 +489,26 @@
                 <!-- Content -->
 
                 <div class="container-xxl flex-grow-1 container-p-y">
-<%--                    <%--%>
-<%--                        if (request.getSession().getAttribute("error") != null){--%>
-<%--                            %>--%>
-<%--                    <script>--%>
-<%--                        Swal.fire({--%>
-<%--                            title: 'Une erreur c\'est produite',--%>
-<%--                            text: '<%=request.getAttribute("error")%>',--%>
-<%--                            icon: '<%=Icon.%>',--%>
-<%--                            confirmButtonText: 'OK'--%>
-<%--                        });--%>
-<%--                    </script>--%>
-<%--                    <%--%>
-<%--                        }--%>
-<%--                    %>--%>
+                    <%
+                        if (session.getAttribute("error") != null){
+
+                            %>
+                    <h1>Misy error</h1>
+                    <script>
+                        Swal.fire({
+                            title: 'Une erreur c\'est produite',
+                            text: '<%=request.getAttribute("error")%>',
+                            icon: 'AlertType.WARNING',
+                            confirmButtonText: 'OK'
+                        });
+                    </script>
+                    <%
+                        }
+                    %>
                     <!-- Basic Bootstrap Table -->
                         <jsp:include page="<%=content%>" />
                     <!--/ Basic Bootstrap Table -->
+
 
                     <hr class="my-12">
 

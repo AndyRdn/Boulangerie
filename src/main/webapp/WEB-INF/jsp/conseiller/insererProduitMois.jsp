@@ -26,12 +26,21 @@
                     %>
                 </select>
             </div>
-            <div class="mb-6">
-                <label class="form-label" for="basic-default-mois">Mois :</label>
-                <select name="idMois" id="basic-default-mois" class="form-select" required>
-                    <% for (int i=1;i<=12;i++) { %>
-                    <option value="<%= i %>"><%= i %></option>
-                    <% } %>
+            <div class="mb-4">
+                <label class="form-label" for="basic-default-month">Mois :</label>
+                <select name="mois" id="basic-default-month" class="form-select">
+                    <option value="1">Janvier</option>
+                    <option value="2">Février</option>
+                    <option value="3">Mars</option>
+                    <option value="4">Avril</option>
+                    <option value="5">Mai</option>
+                    <option value="6">Juin</option>
+                    <option value="7">Juillet</option>
+                    <option value="8">Août</option>
+                    <option value="9">Septembre</option>
+                    <option value="10">Octobre</option>
+                    <option value="11">Novembre</option>
+                    <option value="12">Décembre</option>
                 </select>
             </div>
             <div class="mb-6">

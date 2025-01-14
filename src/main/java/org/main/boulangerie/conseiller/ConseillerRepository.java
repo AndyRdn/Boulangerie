@@ -8,4 +8,11 @@ import java.util.List;
 @Repository
 public interface ConseillerRepository extends JpaRepository<Conseiller, Integer> {
     List<Conseiller> findByMois(Integer mois);
+
+    List<Conseiller> findByMoisAndAnnee(Integer mois, Integer annee);
+
+    @Override
+    boolean existsById(Integer integer);
+
+    boolean existsByIdproduit_IdAndMoisAndAnnee(Integer id, Integer mois, Integer annee);
 }
