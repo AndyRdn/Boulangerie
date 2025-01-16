@@ -5,6 +5,7 @@
 <%@ page import="org.main.boulangerie.vente.ventedetail.Ventedetail" %>
 <%@ page import="org.main.boulangerie.parfum.Parfum" %>
 <%@ page import="org.main.boulangerie.vente.ventedetail.Ventedetail" %>
+<%@ page import="org.main.boulangerie.vente.Vente" %>
 <%
     List<Ventedetail> production = (List<Ventedetail>) request.getAttribute("vente");
     List<Categorieproduit> categ = (List<Categorieproduit>) request.getAttribute("categ");
@@ -44,6 +45,21 @@
             </form>
         </div>
 
+
+
+        <div class="card-body">
+            <form action="/vente/daty" method="post">
+
+
+                <div class="mb-4">
+                    <label class="form-label" for="basic-default-client">Achat des clients en: </label>
+                    <input type="date" name="daty" id="basic-default-client" class="form-select">
+                </div>
+                <button type="submit" class="btn btn-primary">Rechercher</button>
+
+            </form>
+        </div>
+
         <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="mb-0"></h5>
             <small class="text-body float-end"></small>
@@ -53,11 +69,12 @@
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Nom</th>
+                    <th>Nom vente</th>
                     <th>Prix Unitaire</th>
                     <th>Quantiter</th>
                     <th>Catégorie</th>
-<%--                    <th>Actions</th>--%>
+                    <th>Date d'achat</th>
+                    <th>Nom Client</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -71,6 +88,8 @@
 
                     <td><%= product.getQuantite() %></td>
                     <td><%= product.getIdproduit().getIdcategorie().getNom() %></td>
+                    <td><%= product.getIdvente().getDaty() %></td>
+                    <td><%= product.getIdvente().getIdclient().getNom() %></td>
 <%--                    <td>--%>
 <%--                        <a href="/production/formUpdate?id=<%= product.getId() %>" class="btn btn-warning btn-sm">Modifier</a>--%>
 <%--                        <form action="/production/delete" method="post" style="display: inline;">--%>
@@ -82,6 +101,7 @@
                 <%
                     }
                 %>
+
                 </tbody>
             </table>
         </div>
