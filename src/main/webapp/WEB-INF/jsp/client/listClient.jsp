@@ -1,9 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
-<%@ page import="org.main.boulangerie.vente.Client" %>
 <%@ page import="org.main.boulangerie.vente.Vente" %>
 <%
-    List<Vente> ventes = (List<Vente>) request.getAttribute("vente");
+    List<Vente> ventes = (List<Vente>) request.getAttribute("ventes");
 %>
 <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
@@ -41,13 +40,6 @@
                 <td><%= vente.getDaty() %></td>
                 <td><%= vente.getIdclient().getNom() %></td>
 
-                <td>
-                    <a href="/vente/formUpdate?id=<%= vente.getId() %>">Modifier</a>
-                    <form action="/vente/delete" method="post" style="display: inline;">
-                        <input type="hidden" name="id" value="<%= vente.getId() %>">
-                        <button type="submit">Supprimer</button>
-                    </form>
-                </td>
             </tr>
             <%
                 }

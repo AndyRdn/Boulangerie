@@ -100,8 +100,8 @@ public class VenteController {
             if (filtreCLient(filter,v)) filter.add(v);
         }
         System.out.println(filter.size());
-        return new ModelAndView("template").addObject("content","vente/listClient.jsp")
-                .addObject("ventes",ventes);
+        return new ModelAndView("template").addObject("content","client/listClient.jsp")
+                .addObject("ventes",filter);
 
     }
     @PostMapping("/search")
