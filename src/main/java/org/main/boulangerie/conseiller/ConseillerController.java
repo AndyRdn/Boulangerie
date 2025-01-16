@@ -6,6 +6,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 @RequestMapping("/conseiller")
 public class ConseillerController {
@@ -35,9 +38,16 @@ public class ConseillerController {
 
     @GetMapping("/search")
     public ModelAndView SearchList(@RequestParam Integer mois, @RequestParam Integer annee){
+
+        List<Conseiller> conseillers=new ArrayList<>();
+        if (mois==null){
+            conseillers=conseillerService.getAllAnnee(annee);
+        }else {
+            conseillers=conseillerService.getConseillerMandA(mois, annee);
+        }
         return new ModelAndView("template")
                 .addObject("content", "conseiller/ListProduitMois.jsp")
-                .addObject("conseillers", conseillerService.getConseillerMandA(mois, annee));
+                .addObject("conseillers", );
     }
 
     @PostMapping("/save")

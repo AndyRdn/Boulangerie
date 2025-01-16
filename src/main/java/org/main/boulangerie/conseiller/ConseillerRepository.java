@@ -15,4 +15,6 @@ public interface ConseillerRepository extends JpaRepository<Conseiller, Integer>
     boolean existsById(Integer integer);
 
     boolean existsByIdproduit_IdAndMoisAndAnnee(Integer id, Integer mois, Integer annee);
+
+    List<Conseiller> findByAnnee(Integer annee);
 }

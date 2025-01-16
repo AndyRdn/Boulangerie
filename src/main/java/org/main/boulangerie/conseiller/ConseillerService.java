@@ -18,6 +18,11 @@ public class ConseillerService {
         return conseillerRepository.findAll();
     }
 
+    public List<Conseiller> getAllAnnee(int annee){
+        return conseillerRepository.findByAnnee(annee);
+
+    }
+
     public void save(Conseiller conseiller) throws Exception {
         if (conseillerRepository.existsByIdproduit_IdAndMoisAndAnnee(conseiller.getIdproduit().getId(),conseiller.getMois(),conseiller.getAnnee())){
             throw new Exception("Le produit est deja conseiller pour ce mois");
