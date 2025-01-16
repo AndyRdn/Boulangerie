@@ -7,6 +7,7 @@
 <%@ page import="org.main.boulangerie.vente.ventedetail.Ventedetail" %>
 <%
     List<Ventedetail> production = (List<Ventedetail>) request.getAttribute("vente");
+//    List<Ventedetail>  = (List<Ventedetail>) request.getAttribute("vente");
     List<Categorieproduit> categ = (List<Categorieproduit>) request.getAttribute("categ");
     List<Parfum> ing = (List<Parfum>) request.getAttribute("parf");
 %>
@@ -53,10 +54,11 @@
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Nom</th>
+                    <th>Nom Client</th>
                     <th>Prix Unitaire</th>
                     <th>Quantiter</th>
                     <th>Catégorie</th>
+
 <%--                    <th>Actions</th>--%>
                 </tr>
                 </thead>
