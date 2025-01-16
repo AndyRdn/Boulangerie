@@ -9,11 +9,15 @@ import org.main.boulangerie.stock.MvtstockRepository;
 import org.main.boulangerie.vente.ventedetail.Ventedetail;
 import org.main.boulangerie.vente.ventedetail.VentedetailRepository;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/vente")
@@ -80,8 +84,28 @@ public class VenteController {
                 .addObject("parf", parfumRepository.findAll());
     }
 
+    @GetMapping("listClient")
+    public ModelAndView listClient(@RequestParam(required = false) LocalDate daty){
+        List<Vente> ventes=new ArrayList<>();
+        List<Vente> filter= new ArrayList<>();
+        if (daty!=null){
+            ventes=venteRepository.findByDaty(daty);
+
+
+        }else {
+            ventes=venteRepository.findAll();
+        }
+
+        for (Vente v:ventes){
+            if (filtreCLient(filter,v)) filter.add(v);
+        }
+        System.out.println(filter.size());
+        return new ModelAndView("template").addObject("content","vente/listClient.jsp")
+                .addObject("ventes",ventes);
+
+    }
     @PostMapping("/search")
-    public ModelAndView recherche(@RequestParam Integer idparfum, @RequestParam Integer idCategorie) {
+    public ModelAndView recherche(@RequestParam(required = false) Integer idparfum, @RequestParam(required = false) Integer idCategorie, @RequestParam(required = false)LocalDate daty) {
         ModelAndView mav = new ModelAndView("template");
         System.out.println(idparfum);
         System.out.println(idCategorie);
@@ -91,5 +115,13 @@ public class VenteController {
         mav.addObject("content", "vente/list.jsp");
         return mav;
     }
+
+    public boolean filtreCLient(List<Vente> vs,Vente vone){
+        for (Vente va:vs){
+            if (vone.getIdclient().equals(va.getIdclient())) return false;
+        }
+        return true;
+    }
+
 
 }
