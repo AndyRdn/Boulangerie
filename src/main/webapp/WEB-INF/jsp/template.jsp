@@ -355,6 +355,11 @@
                             </a>
                         </li>
                         <li class="menu-item">
+                            <a href="/vente/listClient" class="menu-link">
+                                <div class="text-truncate">Liste des clients</div>
+                            </a>
+                        </li>
+                        <li class="menu-item">
                             <a href="/vente/form" class="menu-link">
                                 <div class="text-truncate" >Insertion</div>
                             </a>
