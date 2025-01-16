@@ -62,7 +62,8 @@
                     <th>Prix de vente</th>
                     <th>Parfum</th>
                     <th>Catégorie</th>
-                    <th>Actions</th>
+                    <th>Mois</th>
+                    <th>annee</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -75,6 +76,8 @@
                     <td><%= cons.getIdproduit().getPrixvente() %></td>
                     <td><%= cons.getIdproduit().getIdparfum().getNom() %></td>
                     <td><%= cons.getIdproduit().getIdcategorie().getNom() %></td>
+                    <td><%= cons.getMois() %></td>
+                    <td><%= cons.getAnnee() %></td>
                     <td>
                         <%--                        <a href="/produit/formUpdate?id=<%= produit.getId() %>" class="btn btn-warning btn-sm">Modifier</a>--%>
                         <%--                        <form action="/produit/delete" method="post" style="display: inline;">--%>

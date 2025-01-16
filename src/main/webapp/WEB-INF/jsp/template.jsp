@@ -125,6 +125,7 @@
     </g>
   </g>
 </svg>
+<script src="../../assets/js/sweetalert2.js"></script>
 
 </span>
                     <span class="app-brand-text demo menu-text fw-bold ms-2">Boulangerie</span>
@@ -493,16 +494,16 @@
                         if (session.getAttribute("error") != null){
 
                             %>
-                    <h1>Misy error</h1>
                     <script>
                         Swal.fire({
-                            title: 'Une erreur c\'est produite',
-                            text: '<%=request.getAttribute("error")%>',
-                            icon: 'AlertType.WARNING',
+                            title: 'Il y a une Erreur',
+                            text: '<%=session.getAttribute("error")%>',
+                            icon: 'warning',
                             confirmButtonText: 'OK'
                         });
                     </script>
                     <%
+                            session.removeAttribute("error");
                         }
                     %>
                     <!-- Basic Bootstrap Table -->
@@ -623,4 +624,3 @@
     </ul>
 </li>
 
-<script src="${pageContext.request.contextPath}/assets/js/sweetalert2.js"></script>

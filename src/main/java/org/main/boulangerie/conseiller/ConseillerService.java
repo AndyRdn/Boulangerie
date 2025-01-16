@@ -20,7 +20,7 @@ public class ConseillerService {
 
     public void save(Conseiller conseiller) throws Exception {
         if (conseillerRepository.existsByIdproduit_IdAndMoisAndAnnee(conseiller.getIdproduit().getId(),conseiller.getMois(),conseiller.getAnnee())){
-            throw new Exception("Produit Existant");
+            throw new Exception("Le produit est deja conseiller pour ce mois");
         }
         conseillerRepository.save(conseiller);
         return;

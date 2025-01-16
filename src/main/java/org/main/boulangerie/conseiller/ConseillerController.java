@@ -44,11 +44,13 @@ public class ConseillerController {
     public String save(@ModelAttribute Conseiller conseiller){
         try {
             conseillerService.save(conseiller);
-        }catch (Exception e){
-            System.out.println("errorooooooo");
-            session.setAttribute("error",e.getMessage());
-        }
             return "redirect:/conseiller/list";
+        }catch (Exception e){
+//            System.out.println("errorooooooo");
+            session.setAttribute("error",e.getMessage());
+            return "redirect:/conseiller/form";
+        }
+
 
     }
 }
