@@ -25,6 +25,7 @@
                     <label className="form-label" htmlFor="basic-default-month">Mois :</label>
                     <label class="form-label" for="basic-default-month">Mois :</label>
                     <select name="mois" id="basic-default-month" class="form-select">
+                        <option value="0">Selectioner une annee</option>
                         <option value="1">Janvier</option>
                         <option value="2">Février</option>
                         <option value="3">Mars</option>

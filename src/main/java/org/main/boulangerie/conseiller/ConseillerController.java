@@ -40,14 +40,14 @@ public class ConseillerController {
     public ModelAndView SearchList(@RequestParam Integer mois, @RequestParam Integer annee){
 
         List<Conseiller> conseillers=new ArrayList<>();
-        if (mois==null){
+        if (mois==0){
             conseillers=conseillerService.getAllAnnee(annee);
         }else {
             conseillers=conseillerService.getConseillerMandA(mois, annee);
         }
         return new ModelAndView("template")
                 .addObject("content", "conseiller/ListProduitMois.jsp")
-                .addObject("conseillers", );
+                .addObject("conseillers",conseillers );
     }
 
     @PostMapping("/save")
