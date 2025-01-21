@@ -2,9 +2,11 @@
 <%@ page import="org.main.boulangerie.produit.Produit" %>
 <%@ page import="org.main.boulangerie.client.Client" %>
 <%@ page import="java.util.List" %>
+<%@ page import="org.main.boulangerie.employe.Employer" %>
 <%
     List<Produit> produits = (List<Produit>) request.getAttribute("produits");
     List<Client> clients = (List<Client>) request.getAttribute("clients");
+    List<Employer> employers = (List<Employer>) request.getAttribute("employers");
 %>
 <!doctype html>
 <html lang="en">
@@ -44,6 +46,14 @@
                 <select name="clientId" id="basic-default-client" class="form-select" required>
                     <% for (Client client : clients) { %>
                     <option value="<%= client.getId() %>"><%= client.getNom() %></option>
+                    <% } %>
+                </select>
+            </div>
+            <div class="mb-6">
+                <label class="form-label" for="basic-default-employer">Client :</label>
+                <select name="employerId" id="basic-default-employer" class="form-select" required>
+                    <% for (Employer employer : employers) { %>
+                    <option value="<%= employer.getId() %>"><%= employer.getNom() %></option>
                     <% } %>
                 </select>
             </div>
