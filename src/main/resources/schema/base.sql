@@ -1,9 +1,4 @@
-CREATE TABLE Employer (
-                          id SERIAL PRIMARY KEY,
-                          nom VARCHAR(255),
-                          salaire DOUBLE PRECISION,
-                          dateEmbauche DATE
-);
+
 
 CREATE TABLE Client (
                         id SERIAL PRIMARY KEY,
@@ -68,19 +63,7 @@ CREATE TABLE achatDetails (
                               prixUnitaire DOUBLE PRECISION
 );
 
-CREATE TABLE Vente (
-                       id SERIAL PRIMARY KEY,
-                       daty DATE,
-                       idClient INT REFERENCES Client(id)
 
-);
-
-CREATE TABLE VenteDetails (
-                              id SERIAL PRIMARY KEY,
-                              idVente INT REFERENCES Vente(id),
-                              idProduit INT REFERENCES Produit(id),
-                              quantite INT
-);
 
 CREATE TABLE MvtStock (
                           id SERIAL PRIMARY KEY,
@@ -138,3 +121,26 @@ CREATE TABLE Conseiller (
                             annee int
 );
 
+CREATE TABLE Employer (
+                          id SERIAL PRIMARY KEY,
+                          nom VARCHAR(255),
+                          salaire DOUBLE PRECISION,
+                          dateEmbauche DATE,
+                          commision double precision
+);
+
+CREATE TABLE Vente (
+                       id SERIAL PRIMARY KEY,
+                       daty DATE,
+                       idClient INT REFERENCES Client(id),
+                       idVendeur INT REFERENCES Employer(id),
+                       commission double precision
+
+);
+
+CREATE TABLE VenteDetails (
+                              id SERIAL PRIMARY KEY,
+                              idVente INT REFERENCES Vente(id),
+                              idProduit INT REFERENCES Produit(id),
+                              quantite INT
+);

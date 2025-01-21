@@ -4,8 +4,11 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.main.boulangerie.client.Client;
+import org.main.boulangerie.employe.Employer;
+import org.main.boulangerie.vente.ventedetail.Ventedetail;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -23,5 +26,25 @@ public class Vente {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idclient")
     private Client idclient;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idvendeur")
+    private Employer idvendeur;
+
+    @Column(name = "commission")
+    private Double commission;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "idproduit")
+    List<Ventedetail> details;
+
+
+    public double getComs(){
+        double sum=0;
+        for(Ventedetail v:details){
+            sum+=v.getIdproduit().getPrixvente()*v.getQuantite();
+        }
+
+        return (sum*idvendeur.getCommision())/100;
+    }
 
 }

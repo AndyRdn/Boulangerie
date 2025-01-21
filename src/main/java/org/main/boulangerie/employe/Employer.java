@@ -25,4 +25,7 @@ public class Employer {
     @Column(name = "dateembauche")
     private LocalDate dateembauche;
 
+    @Column(name = "commision")
+    private Double commision;
+
 }

@@ -71,10 +71,16 @@ public class VenteController {
 
                 details.add(ventedetailRepository.save(detail));
             }
+            vente.setCommission(vente.getComs());
             venteService.saveVente(savedVente, details);
         }
         return "redirect:/vente/form";
     }
+
+//    @GetMapping("/listVenteComs")
+//    public ModelAndView listCommisonVendeur(@RequestParam(required = false) LocalDate debut,@RequestParam(required = false) LocalDate fin ){
+//
+//    }
 
     @GetMapping("/list")
     public ModelAndView listeVenteDetail(){
@@ -89,8 +95,7 @@ public class VenteController {
         List<Vente> ventes=new ArrayList<>();
         List<Vente> filter= new ArrayList<>();
         if (daty!=null){
-            ventes=venteRepository.findByDaty(daty);
-
+            ventes= venteRepository.findByDaty(daty);
 
         }else {
             ventes=venteRepository.findAll();
