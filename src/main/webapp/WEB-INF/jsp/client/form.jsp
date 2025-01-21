@@ -14,7 +14,7 @@
                 <input type="text" class="form-control" id="basic-default-name" placeholder="Nom...." name="nom" required>
             </div>
             <div class="mb-6">
-                <label class="form-label" for="basic-default-date">Date de naissance :</label>
+                <label class="form-label" for="basic-default-date">Date :</label>
                 <input type="date" class="form-control" id="basic-default-date" name="daty">
             </div>
 

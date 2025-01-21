@@ -13,7 +13,7 @@
         <form action="/vente/listClient" method="get">
             <div class="mb-4">
                 <label class="form-label" for="basic-default-categ">Client pour les ventes en:</label>
-                <input type="date" name="daty" id="basic-default-categ" class="form-select">
+                <input type="date" name="daty" id="basic-default-categ" class="form-control">
             </div>
             <button type="submit" class="btn btn-primary">Rechercher</button>
 

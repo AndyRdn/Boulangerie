@@ -100,9 +100,8 @@ public class VenteController {
             if (filtreCLient(filter,v)) filter.add(v);
         }
         System.out.println(filter.size());
-        return new ModelAndView("template").addObject("content","client/listClient.jsp")
+        return new ModelAndView("template").addObject("content","vente/listClient.jsp")
                 .addObject("ventes",filter);
-
     }
     @PostMapping("/search")
     public ModelAndView recherche(@RequestParam(required = false) Integer idparfum, @RequestParam(required = false) Integer idCategorie, @RequestParam(required = false)LocalDate daty) {

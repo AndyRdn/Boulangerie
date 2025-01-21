@@ -54,10 +54,13 @@
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Nom Client</th>
+                    <th>Nom Produit</th>
                     <th>Prix Unitaire</th>
                     <th>Quantiter</th>
                     <th>Catégorie</th>
+                    <th>Date</th>
+                    <th>Nom Client</th>
+
 
 <%--                    <th>Actions</th>--%>
                 </tr>
@@ -73,6 +76,8 @@
 
                     <td><%= product.getQuantite() %></td>
                     <td><%= product.getIdproduit().getIdcategorie().getNom() %></td>
+                    <td><%= product.getIdvente().getDaty() %></td>
+                    <td><%= product.getIdvente().getIdclient().getNom() %></td>
 <%--                    <td>--%>
 <%--                        <a href="/production/formUpdate?id=<%= product.getId() %>" class="btn btn-warning btn-sm">Modifier</a>--%>
 <%--                        <form action="/production/delete" method="post" style="display: inline;">--%>

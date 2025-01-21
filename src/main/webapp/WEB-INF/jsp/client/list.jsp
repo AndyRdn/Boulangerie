@@ -34,7 +34,7 @@
                     <a href="/client/formUpdate?id=<%= client.getId() %>">Modifier</a>
                     <form action="/client/delete" method="post" style="display: inline;">
                         <input type="hidden" name="id" value="<%= client.getId() %>">
-                        <button type="submit">Supprimer</button>
+                        <button type="submit" class="btn btn-danger">Supprimer</button>
                     </form>
                 </td>
             </tr>
