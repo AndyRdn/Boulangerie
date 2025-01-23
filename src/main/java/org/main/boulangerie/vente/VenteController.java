@@ -2,6 +2,8 @@ package org.main.boulangerie.vente;
 
 import org.main.boulangerie.categorie.CategorieproduitRepository;
 import org.main.boulangerie.client.ClientRepository;
+import org.main.boulangerie.employe.Employer;
+import org.main.boulangerie.employe.EmployerService;
 import org.main.boulangerie.parfum.ParfumRepository;
 import org.main.boulangerie.produit.ProduitRepository;
 import org.main.boulangerie.produit.ProduitService;
@@ -30,10 +32,11 @@ public class VenteController {
 
     private final CategorieproduitRepository categorieproduitRepository;
     private final ParfumRepository parfumRepository;
+    private final EmployerService employerService;
 
     public VenteController(VenteService venteService, VenteRepository venteRepository,
                            VentedetailRepository ventedetailRepository, ProduitService produitService,
-                           ClientRepository clientRepository, CategorieproduitRepository categorieproduitRepository, ParfumRepository parfumRepository) {
+                           ClientRepository clientRepository, CategorieproduitRepository categorieproduitRepository, ParfumRepository parfumRepository, EmployerService employerService) {
         this.venteService = venteService;
         this.venteRepository = venteRepository;
         this.ventedetailRepository = ventedetailRepository;
@@ -41,6 +44,7 @@ public class VenteController {
         this.parfumRepository = parfumRepository;
         this.produitService = produitService;
         this.clientRepository = clientRepository;
+        this.employerService = employerService;
     }
 
     @GetMapping("/form")
@@ -48,6 +52,7 @@ public class VenteController {
         ModelAndView mav = new ModelAndView("template");
         mav.addObject("produits", produitService.getAll());
         mav.addObject("clients",clientRepository.findAll());
+        mav.addObject("employers",employerService.getAll());
         mav.addObject("content", "vente/form.jsp");
         return mav;
     }
@@ -58,29 +63,36 @@ public class VenteController {
             Vente vente = new Vente();
             vente.setDaty(form.getDaty());
             vente.setIdclient(form.getClientId());
+            vente.setIdvendeur(form.getVendeurId());
             System.out.println(form.getClientId());
             Vente savedVente = venteRepository.save(vente);
 
             List<Ventedetail> details = new ArrayList<>();
             for (VenteDetailForm detailForm : form.getDetails()) {
+                System.out.println(detailForm.getProduitId());
                 Ventedetail detail = new Ventedetail();
                 detail.setIdvente(savedVente);
                 detail.setQuantite(detailForm.getQuantite());
 //                detail.setPrixunitaire(detailForm.getPrixUnitaire());
-                detail.setIdproduit(produitService.getById(detailForm.getProduitId()));
-
+                detail.setIdproduit(detailForm.getProduitId());
                 details.add(ventedetailRepository.save(detail));
             }
+            vente.setDetails(details);
+
             vente.setCommission(vente.getComs());
             venteService.saveVente(savedVente, details);
         }
         return "redirect:/vente/form";
     }
 
-//    @GetMapping("/listVenteComs")
-//    public ModelAndView listCommisonVendeur(@RequestParam(required = false) LocalDate debut,@RequestParam(required = false) LocalDate fin ){
-//
-//    }
+    @GetMapping("/listVenteComs")
+    public ModelAndView listCommisonVendeur(@RequestParam(required = false) LocalDate dateDebut,@RequestParam(required = false) LocalDate dateFin ){
+        List<VenteCommissionParVendeur> ventes= new ArrayList<>();
+        ventes=venteRepository.findCommissionParVendeurBetweenDates(dateDebut,dateFin);
+        return new ModelAndView("template").addObject("content","vente/venteCommission.jsp")
+                .addObject("ventes",ventes);
+//                .addObject("employers",);
+    }
 
     @GetMapping("/list")
     public ModelAndView listeVenteDetail(){
@@ -107,6 +119,12 @@ public class VenteController {
         System.out.println(filter.size());
         return new ModelAndView("template").addObject("content","vente/listClient.jsp")
                 .addObject("ventes",filter);
+    }
+
+    @GetMapping("/listVente")
+    public ModelAndView listVente(){
+        return new ModelAndView("template").addObject("content","vente/listVente.jsp")
+                .addObject("ventes",venteService.getAllVentes());
     }
     @PostMapping("/search")
     public ModelAndView recherche(@RequestParam(required = false) Integer idparfum, @RequestParam(required = false) Integer idCategorie, @RequestParam(required = false)LocalDate daty) {

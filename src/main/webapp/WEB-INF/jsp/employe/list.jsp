@@ -20,7 +20,8 @@
                     <th>Nom</th>
                     <th>Salaire</th>
                     <th>Date d'embauche</th>
-                    <th>Actions</th>
+                    <th>Commission</th>
+<%--                    <th>Actions</th>--%>
                 </tr>
             </thead>
             <tbody>
@@ -32,13 +33,14 @@
                     <td><%= employe.getNom() %></td>
                     <td><%= employe.getSalaire() %></td>
                     <td><%= employe.getDateembauche() %></td>
-                    <td>
-                        <a href="/employe/formUpdate?id=<%= employe.getId() %>" class="btn btn-warning btn-sm">Modifier</a>
-                        <form action="/employe/delete" method="post" style="display: inline;">
-                            <input type="hidden" name="id" value="<%= employe.getId() %>">
-                            <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
-                        </form>
-                    </td>
+                    <td><%= employe.getCommision() %>%</td>
+<%--                    <td>--%>
+<%--                        <a href="/employe/formUpdate?id=<%= employe.getId() %>" class="btn btn-warning btn-sm">Modifier</a>--%>
+<%--                        <form action="/employe/delete" method="post" style="display: inline;">--%>
+<%--                            <input type="hidden" name="id" value="<%= employe.getId() %>">--%>
+<%--                            <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>--%>
+<%--                        </form>--%>
+<%--                    </td>--%>
                 </tr>
                 <%
                     }

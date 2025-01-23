@@ -350,6 +350,11 @@
                     </a>
                     <ul class="menu-sub">
                         <li class="menu-item">
+                            <a href="/vente/listVenteComs" class="menu-link">
+                                <div class="text-truncate">List commission vendeur</div>
+                            </a>
+                        </li>
+                        <li class="menu-item">
                             <a href="/vente/list" class="menu-link">
                                 <div class="text-truncate">List</div>
                             </a>
@@ -362,6 +367,12 @@
                         <li class="menu-item">
                             <a href="/vente/form" class="menu-link">
                                 <div class="text-truncate" >Insertion</div>
+                            </a>
+                        </li>
+
+                        <li class="menu-item">
+                            <a href="/vente/listVente" class="menu-link">
+                                <div class="text-truncate" >List vente</div>
                             </a>
                         </li>
                     </ul>

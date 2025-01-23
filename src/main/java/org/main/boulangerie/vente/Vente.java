@@ -34,7 +34,7 @@ public class Vente {
     @Column(name = "commission")
     private Double commission;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "idproduit")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "idvente")
     List<Ventedetail> details;
 
 

@@ -50,8 +50,8 @@
                 </select>
             </div>
             <div class="mb-6">
-                <label class="form-label" for="basic-default-employer">Client :</label>
-                <select name="employerId" id="basic-default-employer" class="form-select" required>
+                <label class="form-label" for="basic-default-employer">Vendeur :</label>
+                <select name="vendeurId" id="basic-default-employer" class="form-select" required>
                     <% for (Employer employer : employers) { %>
                     <option value="<%= employer.getId() %>"><%= employer.getNom() %></option>
                     <% } %>
