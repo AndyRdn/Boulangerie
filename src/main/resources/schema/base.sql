@@ -126,7 +126,14 @@ CREATE TABLE Employer (
                           nom VARCHAR(255),
                           salaire DOUBLE PRECISION,
                           dateEmbauche DATE,
-                          commision double precision
+                          commision double precision,
+                          idGenre int references Genre(id)
+
+);
+
+CREATE TABLE Genre(
+    id serial primary key ,
+    nom varchar(255)
 );
 
 CREATE TABLE Vente (

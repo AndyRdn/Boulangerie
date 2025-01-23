@@ -67,4 +67,12 @@ public class VenteService {
         }
         return ventedetails;
     }
+
+    public double getTotalGenre(List<VenteCommissionParVendeur> vendeurs, int id){
+        double som=0;
+        for (VenteCommissionParVendeur v: vendeurs){
+            if (id== v.getIdgenre())som+= v.getTotalCommission();
+        }
+        return som;
+    }
 }

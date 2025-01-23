@@ -4,11 +4,21 @@ public class VenteCommissionParVendeur {
     private Integer idVendeur;
     private String nomVendeur;
     private Double totalCommission;
+    private int idgenre;
 
-    public VenteCommissionParVendeur(Integer idVendeur, String nomVendeur, Double totalCommission) {
+    public VenteCommissionParVendeur(Integer idVendeur, String nomVendeur, Double totalCommission, Integer idgenre) {
         this.idVendeur = idVendeur;
         this.nomVendeur = nomVendeur;
         this.totalCommission = totalCommission;
+        this.idgenre = idgenre;
+    }
+
+    public int getIdgenre() {
+        return idgenre;
+    }
+
+    public void setIdgenre(int idgenre) {
+        this.idgenre = idgenre;
     }
 
     // Getters et Setters

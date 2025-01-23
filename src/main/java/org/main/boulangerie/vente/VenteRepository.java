@@ -9,10 +9,10 @@ import java.util.List;
 
 public interface VenteRepository extends JpaRepository<Vente, Integer> {
     List<Vente> findByDaty(LocalDate daty);
-    @Query("SELECT NEW org.main.boulangerie.vente.VenteCommissionParVendeur(v.idvendeur.id, v.idvendeur.nom, SUM(v.commission)) " +
+    @Query("SELECT NEW org.main.boulangerie.vente.VenteCommissionParVendeur(v.idvendeur.id, v.idvendeur.nom, SUM(v.commission), v.idvendeur.idgenre.id) " +
             "FROM Vente v " +
             "WHERE v.daty >= coalesce(:dateDebut, v.daty) and v.daty<= coalesce(:dateFin, v.daty) " +
-            "GROUP BY v.idvendeur.id, v.idvendeur.nom")
+            "GROUP BY v.idvendeur.id, v.idvendeur.nom, v.idvendeur.idgenre")
     List<VenteCommissionParVendeur> findCommissionParVendeurBetweenDates(
             @Param("dateDebut") LocalDate dateDebut,
             @Param("dateFin") LocalDate dateFin);

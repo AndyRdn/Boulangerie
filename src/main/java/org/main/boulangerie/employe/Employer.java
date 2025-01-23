@@ -3,6 +3,7 @@ package org.main.boulangerie.employe;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.main.boulangerie.genre.Genre;
 
 import java.time.LocalDate;
 
@@ -27,5 +28,9 @@ public class Employer {
 
     @Column(name = "commision")
     private Double commision;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idgenre")
+    private Genre idgenre;
 
 }

@@ -2,24 +2,18 @@ package org.main.boulangerie.vente;
 
 import org.main.boulangerie.categorie.CategorieproduitRepository;
 import org.main.boulangerie.client.ClientRepository;
-import org.main.boulangerie.employe.Employer;
 import org.main.boulangerie.employe.EmployerService;
 import org.main.boulangerie.parfum.ParfumRepository;
-import org.main.boulangerie.produit.ProduitRepository;
 import org.main.boulangerie.produit.ProduitService;
-import org.main.boulangerie.stock.MvtstockRepository;
 import org.main.boulangerie.vente.ventedetail.Ventedetail;
 import org.main.boulangerie.vente.ventedetail.VentedetailRepository;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Controller
 @RequestMapping("/vente")
@@ -90,7 +84,9 @@ public class VenteController {
         List<VenteCommissionParVendeur> ventes= new ArrayList<>();
         ventes=venteRepository.findCommissionParVendeurBetweenDates(dateDebut,dateFin);
         return new ModelAndView("template").addObject("content","vente/venteCommission.jsp")
-                .addObject("ventes",ventes);
+                .addObject("ventes",ventes)
+                .addObject("femme",venteService.getTotalGenre(ventes,2))
+                .addObject("homme",venteService.getTotalGenre(ventes,1));
 //                .addObject("employers",);
     }
 
