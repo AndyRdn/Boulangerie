@@ -43,6 +43,7 @@
                 <th>Id</th>
                 <th>Nom vendeur</th>
                 <th>Commission</th>
+                <th>Genre</th>
             </tr>
             </thead>
             <tbody class="table-border-bottom-0">
@@ -54,6 +55,7 @@
                 <td><%= vente.getIdVendeur() %></td>
                 <td><%= vente.getNomVendeur() %></td>
                 <td><%= vente.getTotalCommission() %></td>
+                <td><%= vente.getGenre %></td>
 <%--                <td><%= vente.getIdemployer.getIdcommission.get() %></td>--%>
 <%--                <td><%= vente.getIdemployer.getNom %></td>--%>
 
