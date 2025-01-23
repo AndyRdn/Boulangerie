@@ -5,6 +5,8 @@
 <%@ page import="org.main.boulangerie.vente.VenteCommissionParVendeur" %>
 <%
     List<VenteCommissionParVendeur> ventes = (List<VenteCommissionParVendeur>) request.getAttribute("ventes");
+    Double homme= (Double) request.getAttribute("homme");
+    Double femme= (Double) request.getAttribute("femme");
 //    List<Employer> employers = (List<Employer>) request.getAttribute("employers");
 %>
 <div class="card">
@@ -34,8 +36,29 @@
 
         </form>
     </div>
-
-
+    <div class="table-responsive text-nowrap">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Total des Commissions des Hommes
+                    </th>
+                    <th>
+                        Total des Commissions des Femmes
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+            <tr>
+                <td>
+                    <%= homme.doubleValue() %>
+                </td>
+                <td>
+                    <%= femme.doubleValue() %>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     <div class="table-responsive text-nowrap">
         <table class="table">
             <thead>
