@@ -17,6 +17,7 @@ public class ProduitForm {
     private Categorieproduit idCategorie;
     private Integer parfum;
     private LocalDate daty;
+
     List<ProduitDetailForm> details;
 }
 
