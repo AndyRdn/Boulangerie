@@ -2,6 +2,8 @@ package org.main.boulangerie.produit;
 
 import org.main.boulangerie.categorie.Categorieproduit;
 import org.main.boulangerie.categorie.CategorieproduitService;
+import org.main.boulangerie.historiquePrixProduit.Historiqueprixproduit;
+import org.main.boulangerie.historiquePrixProduit.HistoriqueprixproduitRepository;
 import org.main.boulangerie.ingredient.Ingredient;
 import org.main.boulangerie.ingredient.IngredientRepository;
 import org.main.boulangerie.model.Model;
@@ -13,6 +15,7 @@ import org.main.boulangerie.produit.produitDetails.ProduitDetailRepository;
 import org.main.boulangerie.typemodel.TypemodelRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,16 +28,21 @@ public class ProduitService {
     private final ModelRepository modelRepository;
     private final ProduitDetailRepository produitDetailRepository;
     private final ParfumRepository parfumRepository;
+    private final Historiqueprixproduit historiqueprixproduit;
+    private final HistoriqueprixproduitRepository historiqueprixproduitRepository;
 
     public ProduitService(ProduitRepository produitRepository, ModelService modelService, TypemodelRepository typemodelRepository,
                           ModelRepository modelRepository,
-                          ProduitDetailRepository produitDetailRepository, ParfumRepository parfumRepository) {
+                          ProduitDetailRepository produitDetailRepository, ParfumRepository parfumRepository, Historiqueprixproduit historiqueprixproduit,
+                          HistoriqueprixproduitRepository historiqueprixproduitRepository) {
         this.produitRepository = produitRepository;
         this.modelService = modelService;
         this.typemodelRepository = typemodelRepository;
         this.modelRepository = modelRepository;
         this.produitDetailRepository = produitDetailRepository;
         this.parfumRepository = parfumRepository;
+        this.historiqueprixproduit = historiqueprixproduit;
+        this.historiqueprixproduitRepository = historiqueprixproduitRepository;
     }
 
     public List<Produit> getAll() {
@@ -57,6 +65,12 @@ public class ProduitService {
         produit.setIdcategorie(form.getIdCategorie());
         produit.setIdparfum(parfumRepository.findById(form.getParfum()).get());
         Produit merProd= produitRepository.save(produit);
+
+        Historiqueprixproduit historiqueprixproduit = new Historiqueprixproduit();
+        historiqueprixproduit.setIdproduit(merProd);
+        historiqueprixproduit.setDaty(LocalDate.now());
+        historiqueprixproduit.setPrix(merProd.getPrixvente());
+        historiqueprixproduitRepository.save(historiqueprixproduit);
 
         for (ProduitDetailForm formD:form.getDetails()){
             ProduitDetail temp=  new ProduitDetail();

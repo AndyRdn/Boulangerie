@@ -156,4 +156,11 @@ CREATE TABLE Config(
     id serial primary key ,
     nom varchar(255),
     value varchar(255)
-)
+);
+
+create table HistoriquePrixProduit(
+    id serial primary key ,
+    daty Date,
+    idProduit int references produit(id),
+    prix double precision
+);
