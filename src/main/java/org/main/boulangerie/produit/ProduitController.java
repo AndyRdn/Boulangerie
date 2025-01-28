@@ -1,20 +1,16 @@
 package org.main.boulangerie.produit;
 
-import org.main.boulangerie.categorie.Categorieproduit;
 import org.main.boulangerie.categorie.CategorieproduitRepository;
 import org.main.boulangerie.categorie.CategorieproduitService;
 import org.main.boulangerie.historiquePrixProduit.Historiqueprixproduit;
 import org.main.boulangerie.historiquePrixProduit.HistoriqueprixproduitRepository;
 import org.main.boulangerie.ingredient.Ingredient;
 import org.main.boulangerie.ingredient.IngredientRepository;
-import org.main.boulangerie.ingredient.IngredientService;
 import org.main.boulangerie.model.ModelService;
 import org.main.boulangerie.parfum.ParfumRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/produit")
@@ -23,12 +19,16 @@ public class ProduitController {
     private final IngredientRepository ingredientRepository;
     private final CategorieproduitRepository categorieproduitRepository;
     private final ParfumRepository parfumRepository;
+    private final  ModelService modelService;
+    private final CategorieproduitService categorieproduitService;
 
-    public ProduitController(ProduitService produitService, IngredientRepository ingredientRepository, CategorieproduitRepository categorieproduitRepository, ParfumRepository parfumRepository) {
+    public ProduitController(ProduitService produitService, IngredientRepository ingredientRepository, CategorieproduitRepository categorieproduitRepository, ParfumRepository parfumRepository, ModelService modelService, CategorieproduitService categorieproduitService) {
         this.produitService = produitService;
         this.ingredientRepository = ingredientRepository;
         this.categorieproduitRepository = categorieproduitRepository;
         this.parfumRepository = parfumRepository;
+        this.modelService = modelService;
+        this.categorieproduitService = categorieproduitService;
     }
 
     @GetMapping("/form")
@@ -69,14 +69,14 @@ public class ProduitController {
         return mav;
     }
 
-//    @GetMapping("/formUpdate")
-//    public ModelAndView formUpdate(@RequestParam("id") Integer id) {
-//        return new ModelAndView("template")
-//            .addObject("content", "produit/update.jsp")
-//            .addObject("produit", produitService.getById(id))
-//            .addObject("models", modelService.getAll())
-//            .addObject("categories", categorieproduitService.getAll());
-//    }
+    @GetMapping("/formUpdate")
+    public ModelAndView formUpdate(@RequestParam("id") Integer id) {
+        return new ModelAndView("template")
+            .addObject("content", "produit/update.jsp")
+            .addObject("produit", produitService.getById(id))
+            .addObject("models", modelService.getAll())
+            .addObject("categories", categorieproduitService.getAll());
+    }
 
     @PostMapping("/update")
     public String update(@RequestParam("id") Integer id, @ModelAttribute ProduitForm form) {
