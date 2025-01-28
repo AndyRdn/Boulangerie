@@ -28,12 +28,11 @@ public class ProduitService {
     private final ModelRepository modelRepository;
     private final ProduitDetailRepository produitDetailRepository;
     private final ParfumRepository parfumRepository;
-    private final Historiqueprixproduit historiqueprixproduit;
     private final HistoriqueprixproduitRepository historiqueprixproduitRepository;
 
     public ProduitService(ProduitRepository produitRepository, ModelService modelService, TypemodelRepository typemodelRepository,
                           ModelRepository modelRepository,
-                          ProduitDetailRepository produitDetailRepository, ParfumRepository parfumRepository, Historiqueprixproduit historiqueprixproduit,
+                          ProduitDetailRepository produitDetailRepository, ParfumRepository parfumRepository,
                           HistoriqueprixproduitRepository historiqueprixproduitRepository) {
         this.produitRepository = produitRepository;
         this.modelService = modelService;
@@ -41,7 +40,6 @@ public class ProduitService {
         this.modelRepository = modelRepository;
         this.produitDetailRepository = produitDetailRepository;
         this.parfumRepository = parfumRepository;
-        this.historiqueprixproduit = historiqueprixproduit;
         this.historiqueprixproduitRepository = historiqueprixproduitRepository;
     }
 
@@ -100,14 +98,22 @@ public class ProduitService {
         return painBeurres;
     }
 
-//    public void update(Integer id, ProduitForm form) {
-//        Produit produit = produitRepository.findById(id).orElseThrow(() -> new RuntimeException("Produit introuvable"));
-//        produit.setNom(form.getNom());
-//        produit.setPrixvente(form.getPrixvente());
-//        produit.setIdmodel(modelService.getById(form.getIdmodel()));
-//        produit.setIdcategorie(categorieproduitService.getById(form.getIdcategorie()));
-//        produitRepository.save(produit);
-//    }
+    public void update(ProduitForm form) {
+        Produit prodMere= produitRepository.findById(form.getId()).get();
+
+        prodMere.setId(form.getId());
+        prodMere.setNom(form.getNom());
+        prodMere.setPrixvente(form.getPrixvente());
+        prodMere.setIdcategorie(form.getIdCategorie());
+        prodMere.setIdparfum(parfumRepository.findById(form.getParfum()).get());
+        Produit merProd= produitRepository.save(prodMere);
+
+        Historiqueprixproduit historiqueprixproduit = new Historiqueprixproduit();
+        historiqueprixproduit.setIdproduit(merProd);
+        historiqueprixproduit.setDaty(LocalDate.now());
+        historiqueprixproduit.setPrix(merProd.getPrixvente());
+        historiqueprixproduitRepository.save(historiqueprixproduit);
+    }
 
     public void delete(Integer id) {
         produitRepository.deleteById(id);

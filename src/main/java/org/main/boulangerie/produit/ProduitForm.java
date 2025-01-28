@@ -5,16 +5,18 @@ import lombok.Setter;
 import org.main.boulangerie.categorie.Categorieproduit;
 import org.main.boulangerie.ingredient.Ingredient;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Getter
 @Setter
 public class ProduitForm {
+    private Integer id;
     private String nom;
     private Double prixvente;
     private Categorieproduit idCategorie;
     private Integer parfum;
-    private
+    private LocalDate daty;
     List<ProduitDetailForm> details;
 }
 
