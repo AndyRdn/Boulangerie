@@ -110,7 +110,7 @@ public class ProduitService {
 
         Historiqueprixproduit historiqueprixproduit = new Historiqueprixproduit();
         historiqueprixproduit.setIdproduit(merProd);
-        historiqueprixproduit.setDaty(LocalDate.now());
+        historiqueprixproduit.setDaty(form.getDaty());
         historiqueprixproduit.setPrix(merProd.getPrixvente());
         historiqueprixproduitRepository.save(historiqueprixproduit);
     }

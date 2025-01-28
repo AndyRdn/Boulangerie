@@ -302,6 +302,11 @@
                                 <div class="text-truncate" >Insertion</div>
                             </a>
                         </li>
+                        <li class="menu-item">
+                            <a href="/produit/historique" class="menu-link">
+                                <div class="text-truncate" >Historique</div>
+                            </a>
+                        </li>
                     </ul>
                 </li>
 

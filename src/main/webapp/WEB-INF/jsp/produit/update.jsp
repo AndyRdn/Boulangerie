@@ -57,8 +57,8 @@
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label" for="idcategorie">Catégorie :</label>
-                    <select class="form-control" id="idcategorie" name="idcategorie" required>
+                    <label class="form-label" for="idCategorie">Catégorie :</label>
+                    <select class="form-control" id="idCategorie" name="idCategorie" required>
                         <%
                             for (Categorieproduit categorie : categories) {
                                 String selected = categorie.getId().equals(produit.getIdcategorie().getId()) ? "selected" : "";

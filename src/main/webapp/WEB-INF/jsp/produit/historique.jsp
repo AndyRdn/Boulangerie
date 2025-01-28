@@ -35,6 +35,7 @@
                     for (Historiqueprixproduit hisos : hiso) {
                 %>
                 <tr>
+                    <td><%= hisos.getId()%></td>
                     <td><%= hisos.getIdproduit().getNom()%></td>
                     <td><%= hisos.getDaty() %></td>
                     <td><%= hisos.getPrix() %></td>

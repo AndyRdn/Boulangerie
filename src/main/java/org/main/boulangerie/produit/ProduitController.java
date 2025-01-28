@@ -47,7 +47,18 @@ public class ProduitController {
     @GetMapping("/historique")
     public ModelAndView historique(){
         ModelAndView mav=new ModelAndView("template");
+        mav.addObject("content", "produit/historique.jsp");
         mav.addObject("historique", historiqueprixproduitRepository.findAll());
+        mav.addObject("produit", produitService.getAll());
+        return mav;
+    }
+
+    @PostMapping("/searchHisto")
+    public ModelAndView searchHisto(@RequestParam Integer id){
+        ModelAndView mav=new ModelAndView("template");
+        mav.addObject("content", "produit/historique.jsp");
+        mav.addObject("historique", historiqueprixproduitRepository.findByIdproduit_Id(id));
+        mav.addObject("produit", produitService.getAll());
         return mav;
     }
 
@@ -55,8 +66,6 @@ public class ProduitController {
     @PostMapping("/search")
     public ModelAndView recherche(@RequestParam Integer idIngredient, @RequestParam Integer idCategorie) {
         ModelAndView mav = new ModelAndView("template");
-        System.out.println(idIngredient);
-        System.out.println(idCategorie);
         mav.addObject("produits", produitService.checkProduit(idIngredient,idCategorie));
         mav.addObject("categ", categorieproduitRepository.findAll());
         mav.addObject("ing", ingredientRepository.findAll());
