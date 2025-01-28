@@ -14,7 +14,6 @@ public class ProduitForm {
     private Double prixvente;
     private Categorieproduit idCategorie;
     private Integer parfum;
-    private
     List<ProduitDetailForm> details;
 }
 

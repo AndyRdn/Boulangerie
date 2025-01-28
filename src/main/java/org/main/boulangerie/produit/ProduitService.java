@@ -86,16 +86,18 @@ public class ProduitService {
         return painBeurres;
     }
 
-//    public void update(Integer id, ProduitForm form) {
-//        Produit produit = produitRepository.findById(id).orElseThrow(() -> new RuntimeException("Produit introuvable"));
-//        produit.setNom(form.getNom());
-//        produit.setPrixvente(form.getPrixvente());
+    public void update(Integer id, ProduitForm form) {
+        Produit produit = produitRepository.findById(id).orElseThrow(() -> new RuntimeException("Produit introuvable"));
+        produit.setNom(form.getNom());
+        produit.setPrixvente(form.getPrixvente());
 //        produit.setIdmodel(modelService.getById(form.getIdmodel()));
 //        produit.setIdcategorie(categorieproduitService.getById(form.getIdcategorie()));
-//        produitRepository.save(produit);
-//    }
+        produitRepository.save(produit);
+    }
 
     public void delete(Integer id) {
         produitRepository.deleteById(id);
     }
+
+
 }

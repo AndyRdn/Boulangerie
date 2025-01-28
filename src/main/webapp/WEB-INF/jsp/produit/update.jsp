@@ -29,12 +29,12 @@
 
                 <div class="mb-3">
                     <label class="form-label" for="nom">Parfum</label>
-                    <input type="text" class="form-control" id="parfum" name="parfum" value="<%= produit.getIdparfum().getNom() %>" required>
+                    <input type="text" class="form-control" id="parfum" name="parfum" value="<%= produit.getIdparfum().getId()%>" required>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label" for="prixvente">Prix de vente :</label>
-                    <input type="number" step="0.01" class="form-control" id="prixvente" name="prixvente" value="<%= produit.getPrixvente() %>" required>
+                    <input type="number" step="0.01" class="form-control" id="prixvente" name="prixvente" value="<%= produit.getPrixvente() %>"  required>
                 </div>
 
                 <div class="mb-3">
