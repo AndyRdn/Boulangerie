@@ -3,6 +3,8 @@ package org.main.boulangerie.produit;
 import org.main.boulangerie.categorie.Categorieproduit;
 import org.main.boulangerie.categorie.CategorieproduitRepository;
 import org.main.boulangerie.categorie.CategorieproduitService;
+import org.main.boulangerie.historiquePrixProduit.Historiqueprixproduit;
+import org.main.boulangerie.historiquePrixProduit.HistoriqueprixproduitRepository;
 import org.main.boulangerie.ingredient.Ingredient;
 import org.main.boulangerie.ingredient.IngredientRepository;
 import org.main.boulangerie.ingredient.IngredientService;
