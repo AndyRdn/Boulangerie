@@ -21,14 +21,17 @@ public class ProduitController {
     private final ParfumRepository parfumRepository;
     private final  ModelService modelService;
     private final CategorieproduitService categorieproduitService;
+    private final HistoriqueprixproduitRepository historiqueprixproduitRepository;
 
-    public ProduitController(ProduitService produitService, IngredientRepository ingredientRepository, CategorieproduitRepository categorieproduitRepository, ParfumRepository parfumRepository, ModelService modelService, CategorieproduitService categorieproduitService) {
+    public ProduitController(ProduitService produitService, IngredientRepository ingredientRepository, CategorieproduitRepository categorieproduitRepository, ParfumRepository parfumRepository, ModelService modelService, CategorieproduitService categorieproduitService,
+                             HistoriqueprixproduitRepository historiqueprixproduitRepository) {
         this.produitService = produitService;
         this.ingredientRepository = ingredientRepository;
         this.categorieproduitRepository = categorieproduitRepository;
         this.parfumRepository = parfumRepository;
         this.modelService = modelService;
         this.categorieproduitService = categorieproduitService;
+        this.historiqueprixproduitRepository = historiqueprixproduitRepository;
     }
 
     @GetMapping("/form")
@@ -41,6 +44,14 @@ public class ProduitController {
 
 
     }
+    @GetMapping("/historique")
+    public ModelAndView historique(){
+        ModelAndView mav=new ModelAndView("template");
+        mav.addObject("historique", historiqueprixproduitRepository.findAll());
+        return mav;
+    }
+
+
     @PostMapping("/search")
     public ModelAndView recherche(@RequestParam Integer idIngredient, @RequestParam Integer idCategorie) {
         ModelAndView mav = new ModelAndView("template");
