@@ -80,7 +80,7 @@ public class ProduitController {
 
     @PostMapping("/update")
     public String update(@RequestParam("id") Integer id, @ModelAttribute ProduitForm form) {
-        produitService.update(id, form);
+//        produitService.update(id, form);
         return "redirect:/produit/list";
     }
 
