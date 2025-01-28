@@ -78,7 +78,7 @@
                 <td><%= vente.getIdVendeur() %></td>
                 <td><%= vente.getNomVendeur() %></td>
                 <td><%= vente.getTotalCommission() %></td>
-                <td><%= vente.getGenre %></td>
+                <td><%= vente.getIdgenre() %></td>
 <%--                <td><%= vente.getIdemployer.getIdcommission.get() %></td>--%>
 <%--                <td><%= vente.getIdemployer.getNom %></td>--%>
 

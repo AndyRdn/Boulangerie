@@ -151,3 +151,9 @@ CREATE TABLE VenteDetails (
                               idProduit INT REFERENCES Produit(id),
                               quantite INT
 );
+
+CREATE TABLE Config(
+    id serial primary key ,
+    nom varchar(255),
+    value varchar(255)
+)

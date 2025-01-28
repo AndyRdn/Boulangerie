@@ -38,13 +38,18 @@ public class Vente {
     List<Ventedetail> details;
 
 
-    public double getComs(){
+    public double getComs(double limmit){
         double sum=0;
         for(Ventedetail v:details){
             sum+=v.getIdproduit().getPrixvente()*v.getQuantite();
         }
 
-        return (sum*idvendeur.getCommision())/100;
+        if (sum<limmit){
+            return 0;
+        }else {
+            return (sum*idvendeur.getCommision())/100;
+        }
+
     }
 
 }

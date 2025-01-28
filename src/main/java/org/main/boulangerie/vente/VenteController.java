@@ -2,6 +2,7 @@ package org.main.boulangerie.vente;
 
 import org.main.boulangerie.categorie.CategorieproduitRepository;
 import org.main.boulangerie.client.ClientRepository;
+import org.main.boulangerie.config.ConfigService;
 import org.main.boulangerie.employe.EmployerService;
 import org.main.boulangerie.parfum.ParfumRepository;
 import org.main.boulangerie.produit.ProduitService;
@@ -28,9 +29,11 @@ public class VenteController {
     private final ParfumRepository parfumRepository;
     private final EmployerService employerService;
 
+    private final ConfigService configService;
+
     public VenteController(VenteService venteService, VenteRepository venteRepository,
                            VentedetailRepository ventedetailRepository, ProduitService produitService,
-                           ClientRepository clientRepository, CategorieproduitRepository categorieproduitRepository, ParfumRepository parfumRepository, EmployerService employerService) {
+                           ClientRepository clientRepository, CategorieproduitRepository categorieproduitRepository, ParfumRepository parfumRepository, EmployerService employerService, ConfigService configService) {
         this.venteService = venteService;
         this.venteRepository = venteRepository;
         this.ventedetailRepository = ventedetailRepository;
@@ -39,6 +42,7 @@ public class VenteController {
         this.produitService = produitService;
         this.clientRepository = clientRepository;
         this.employerService = employerService;
+        this.configService = configService;
     }
 
     @GetMapping("/form")
@@ -73,7 +77,7 @@ public class VenteController {
             }
             vente.setDetails(details);
 
-            vente.setCommission(vente.getComs());
+            vente.setCommission(vente.getComs(Double.parseDouble(configService.getByKey("limiteComs"))));
             venteService.saveVente(savedVente, details);
         }
         return "redirect:/vente/form";
